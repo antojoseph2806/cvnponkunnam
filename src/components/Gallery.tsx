@@ -19,7 +19,7 @@ const Gallery = () => (
     <div className="container-narrow">
       <h2 className="font-heading text-3xl md:text-4xl text-center mb-4 text-foreground">Photo Gallery</h2>
       <div className="text-center mb-10">
-        <a href="#gallery" className="text-sm text-terracotta hover:text-accent font-semibold transition-colors">
+        <a href="#gallery" className="text-sm text-highlight hover:text-accent font-semibold transition-colors">
           View all photos →
         </a>
       </div>
