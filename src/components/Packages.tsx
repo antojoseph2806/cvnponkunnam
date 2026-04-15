@@ -52,13 +52,13 @@ const Packages = () => (
           <div key={pkg.title} className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
             <img src={pkg.image} alt={pkg.title} loading="lazy" className="w-full h-56 object-cover" />
             <div className="p-6">
-              <p className="text-terracotta text-sm font-semibold">{pkg.duration}</p>
+              <p className="text-highlight text-sm font-semibold">{pkg.duration}</p>
               <p className="text-xs text-muted-foreground mb-3">{pkg.perDay}</p>
               <h4 className="font-heading text-xl text-foreground mb-4">{pkg.title}</h4>
               <ul className="space-y-2 mb-6">
                 {pkg.features.map((f) => (
                   <li key={f} className="text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-terracotta mt-0.5">•</span>
+                    <span className="text-highlight mt-0.5">•</span>
                     {f}
                   </li>
                 ))}

@@ -40,7 +40,7 @@ const StatItem = ({ value, suffix, label }: { value: number; suffix: string; lab
   const { count, ref } = useCountUp(value);
   return (
     <div ref={ref} className="text-center">
-      <p className="font-heading text-4xl md:text-5xl text-terracotta-light">
+      <p className="font-heading text-4xl md:text-5xl text-highlight-light">
         {count}
         <span>{suffix}</span>
       </p>

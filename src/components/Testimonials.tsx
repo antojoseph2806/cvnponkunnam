@@ -33,11 +33,11 @@ const Testimonials = () => {
       <div className="container-narrow text-center">
         <h2 className="font-heading text-3xl md:text-4xl mb-12">Testimonials</h2>
         <div className="relative max-w-3xl mx-auto">
-          <Quote className="w-12 h-12 text-terracotta-light mx-auto mb-6 opacity-60" />
+          <Quote className="w-12 h-12 text-highlight-light mx-auto mb-6 opacity-60" />
           <p className="text-lg md:text-xl leading-relaxed mb-8 italic text-primary-foreground/90 min-h-[120px]">
             "{testimonials[current].text}"
           </p>
-          <h4 className="font-heading text-xl text-terracotta-light">{testimonials[current].name}</h4>
+          <h4 className="font-heading text-xl text-highlight-light">{testimonials[current].name}</h4>
 
           <div className="flex justify-center gap-4 mt-8">
             <button onClick={() => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length)} className="p-2 rounded-full border border-primary-foreground/20 hover:bg-primary-foreground/10 transition-colors">

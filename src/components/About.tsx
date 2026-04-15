@@ -7,7 +7,7 @@ const About = () => (
         <img src={aboutImg} alt="CVN Kalari Kerala" loading="lazy" width={1200} height={800} className="w-full h-[400px] lg:h-[500px] object-cover" />
       </div>
       <div>
-        <p className="text-terracotta font-semibold text-sm tracking-wide mb-2">EP Vasudeva Gurukkal's</p>
+        <p className="text-highlight font-semibold text-sm tracking-wide mb-2">EP Vasudeva Gurukkal's</p>
         <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
           CVN Kalari Kaduthuruthy
         </h2>

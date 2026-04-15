@@ -33,7 +33,7 @@ const Services = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {services.map((s) => (
           <div key={s.title} className="bg-card rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow group">
-            <s.icon className="w-10 h-10 text-terracotta mb-4 group-hover:scale-110 transition-transform" />
+            <s.icon className="w-10 h-10 text-highlight mb-4 group-hover:scale-110 transition-transform" />
             <h4 className="font-heading text-xl mb-3 text-foreground">{s.title}</h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">{s.description}</p>
             <a href="#" className="text-sm font-semibold text-primary hover:text-accent transition-colors">

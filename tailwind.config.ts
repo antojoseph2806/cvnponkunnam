@@ -47,9 +47,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        terracotta: {
-          DEFAULT: "hsl(var(--terracotta))",
-          light: "hsl(var(--terracotta-light))",
+        highlight: {
+          DEFAULT: "hsl(var(--highlight))",
+          light: "hsl(var(--highlight-light))",
         },
         cream: "hsl(var(--cream))",
         gold: "hsl(var(--gold))",
