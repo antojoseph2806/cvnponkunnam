@@ -1,11 +1,10 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import heroMartialArt from "@/assets/hero-martial-art.jpg";
-import heroAyurveda from "@/assets/hero-ayurveda.jpg";
-import heroGurukkal from "@/assets/hero-gurukkal.jpg";
 
 const slides = [
   {
-    image: heroMartialArt,
+    image: "/assets/hero-martial-art.jpg",
     subtitle: "EXPERIENCE THE TRANSFORMATIVE POWER OF KALARIPAYATTU",
     title: (
       <>
@@ -14,20 +13,11 @@ const slides = [
     ),
   },
   {
-    image: heroAyurveda,
+    image: "/assets/hero-ayurveda.jpg",
     subtitle: "DISCOVER THE HEALING POWER OF ANCIENT AYURVEDIC PRACTICES",
     title: (
       <>
         Ayurveda Kalari Treatments: Your Path to <em>Natural Healing</em>
-      </>
-    ),
-  },
-  {
-    image: heroGurukkal,
-    subtitle: "MASTER THE ART OF COMBAT, WELLNESS, AND SELF-DISCIPLINE",
-    title: (
-      <>
-        Best Kalaripayattu Training: EP Vasudeva Gurukkal's <em>CVN Kalari</em>
       </>
     ),
   },
