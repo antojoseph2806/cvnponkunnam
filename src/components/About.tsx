@@ -12,7 +12,7 @@ const About = () => (
           AKM Sri Rudra Kalari
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          AKM Sri Rudra (C. V. N. Kalari) is situated in Lakkattoor Kottayam is close to famous tourist centres like Kumarakom and Wagamon. Ajithkumar Gurukkal, the founder of this kalari, was the student of Malabar Vasudeva Gurukkal who belongs to the C. V. N. tradition. He established it in 1996, after having first learnt under his father Karunakaran Nair too.
+          AKM Sri Rudra (C. V. N. Kalari) is situated in Lakkoor, Kothala, Ponkunnam, Kottayam and is close to famous tourist centres like Kumarakom and Wagamon. Ajithkumar Gurukkal, the founder of this kalari, was the student of Malabar Vasudeva Gurukkal who belongs to the C. V. N. tradition. He established it in 1996, after having first learnt under his father Karunakaran Nair too.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-4">
           Sri Rudra is a kuzhi kalari and it focuses on Meypayattu, Self defence and weapon training which is the cornerstone of the Northern style. Besides daily Kalaripayattu classes are done in morning and evenings, it offers yoga classes as well. Children from the age of seven are taken in for training programmes. No upper age limit has been fixed to induct interested pupils.

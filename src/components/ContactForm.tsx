@@ -80,11 +80,11 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
-                    <a href="tel:+919447042422" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
-                      +91 9447042422
+                    <a href="tel:+918075484602" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
+                      +91 8075 484 602
                     </a>
-                    <a href="tel:+919496186093" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
-                      +91 9496186093
+                    <a href="tel:+917306901750" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
+                      +91 73069 01750 (WhatsApp, Call)
                     </a>
                   </div>
                 </div>

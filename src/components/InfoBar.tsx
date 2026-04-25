@@ -5,13 +5,13 @@ const InfoBar = () => (
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
       <div className="flex flex-col items-center gap-2">
         <MapPin className="w-8 h-8 text-highlight-light" />
-        <p className="font-semibold">CVN Kalari (EP Vasudeva Gurukkal)</p>
-        <p className="text-sm text-primary-foreground/70">Temple Rd, Kaduthuruthy, Kottayam, KL</p>
+        <p className="font-semibold">Sree Rudra CVN Kalari</p>
+        <p className="text-sm text-primary-foreground/70">Lakkoor, Kothala, Ponkunnam</p>
       </div>
       <div className="flex flex-col items-center gap-2">
         <Phone className="w-8 h-8 text-highlight-light" />
-        <p className="font-semibold">+91 9447042422 /</p>
-        <p className="text-sm text-primary-foreground/70">+91 9496186093</p>
+        <p className="font-semibold">+91 8075 484 602</p>
+        <p className="text-sm text-primary-foreground/70">+91 73069 01750</p>
       </div>
       <div className="flex flex-col items-center gap-2">
         <Clock className="w-8 h-8 text-highlight-light" />

@@ -42,16 +42,16 @@ const Header = () => {
       <div className="bg-primary text-primary-foreground text-sm py-2 px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4" />
-          <span className="hidden sm:inline">Temple Rd, Kaduthuruthy, Kottayam, KL</span>
+          <span className="hidden sm:inline">Lakkoor, Kothala, Ponkunnam</span>
         </div>
         <div className="flex items-center gap-4">
-          <a href="tel:+919447042422" className="flex items-center gap-1 hover:text-highlight-light transition-colors">
+          <a href="tel:+918075484602" className="flex items-center gap-1 hover:text-highlight-light transition-colors">
             <Phone className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">+91 9447042422</span>
+            <span className="hidden md:inline">+91 8075 484 602</span>
           </a>
-          <a href="tel:+919496186093" className="flex items-center gap-1 hover:text-highlight-light transition-colors">
+          <a href="tel:+917306901750" className="flex items-center gap-1 hover:text-highlight-light transition-colors">
             <Phone className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">+91 9496186093</span>
+            <span className="hidden md:inline">+91 73069 01750</span>
           </a>
           <div className="flex items-center gap-3 ml-2">
             <button type="button" aria-label="Facebook" className="hover:text-highlight-light transition-colors">

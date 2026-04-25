@@ -131,7 +131,7 @@ export default function KalariTrainingPage() {
 
                       {/* Booking Button */}
                       <div className="text-center pt-4">
-                        <a href="https://wa.me/917306901750?text=Hi,%20I%20would%20like%20to%20book%20the%20One%20Month%20Intense%20Kalari%20Training%20Program" target="_blank" rel="noopener noreferrer">
+                        <a href="https://wa.me/917306901750?text=Hi%2C%20I%27m%20interested%20in%20the%20One%20Month%20Intensive%20Kalari%20Training%20Program%20at%20Sree%20Rudra%20CVN%20Kalari.%20Could%20you%20please%20share%20details%20about%20fees%2C%20schedule%2C%20and%20availability%3F%20Thank%20you." target="_blank" rel="noopener noreferrer">
                           <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground px-8 py-6 text-lg font-semibold">
                             Book Your Training Program
                           </Button>

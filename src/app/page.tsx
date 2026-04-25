@@ -5,8 +5,10 @@ import Services from "@/components/Services";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
+import Locations from "@/components/Locations";
 import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
+import StickyContactButtons from "@/components/StickyContactButtons";
 
 export default function HomePage() {
   return (
@@ -19,9 +21,11 @@ export default function HomePage() {
         <About />
         <Testimonials />
         <Gallery />
+        <Locations />
         <Stats />
       </main>
       <Footer />
+      <StickyContactButtons />
     </div>
   );
 }
