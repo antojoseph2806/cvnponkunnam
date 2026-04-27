@@ -71,7 +71,7 @@ const Services = () => (
         </h2>
         <div className="mt-4 flex items-center justify-center gap-3 text-highlight/60">
           <span className="h-px w-16 bg-highlight/30" />
-          <Sparkles className="h-4 w-4" />
+          <Leaf className="h-4 w-4" />
           <span className="h-px w-16 bg-highlight/30" />
         </div>
         <p className="section-lead mx-auto mt-6 max-w-3xl">
