@@ -144,7 +144,7 @@ const Services = () => (
 
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               <div className="flex items-center gap-3 rounded-lg bg-white p-3">
-                <Clock className="h-5 w-5 flex-shrink-0 text-highlight" />
+                <Clock3 className="h-5 w-5 flex-shrink-0 text-highlight" />
                 <div>
                   <p className="text-xs text-muted-foreground">Duration</p>
                   <p className="text-sm font-semibold text-foreground">30 Days</p>
