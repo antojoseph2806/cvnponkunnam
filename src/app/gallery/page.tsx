@@ -11,7 +11,7 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-[calc(2.5rem+5rem)]">
+      <main className="pt-20">
         <Gallery showViewAllLink={false} />
       </main>
       <Footer />

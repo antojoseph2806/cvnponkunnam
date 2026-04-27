@@ -113,28 +113,28 @@
     @apply max-w-7xl mx-auto;
   }
   .section-eyebrow {
-    @apply text-highlight text-[0.72rem] font-semibold uppercase tracking-[0.28em];
+    @apply text-highlight text-xs font-semibold uppercase tracking-wider;
   }
   .section-title {
-    @apply font-heading text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl;
+    @apply font-heading text-2xl leading-tight text-foreground md:text-3xl lg:text-4xl;
   }
   .section-title-sm {
-    @apply font-heading text-3xl leading-tight text-foreground md:text-4xl lg:text-5xl;
+    @apply font-heading text-xl leading-tight text-foreground md:text-2xl lg:text-3xl;
   }
   .section-lead {
-    @apply text-base leading-8 text-muted-foreground md:text-lg;
+    @apply text-base leading-7 text-muted-foreground md:text-lg;
   }
   .section-copy {
-    @apply text-base leading-8 text-muted-foreground;
+    @apply text-sm leading-7 text-muted-foreground md:text-base;
   }
   .body-copy {
-    @apply text-base leading-8 text-muted-foreground;
+    @apply text-sm leading-7 text-muted-foreground md:text-base;
   }
   .page-title {
-    @apply font-heading text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl;
+    @apply font-heading text-2xl leading-tight text-foreground md:text-3xl lg:text-4xl;
   }
   .page-lead {
-    @apply mx-auto max-w-3xl text-base leading-8 text-muted-foreground md:text-lg;
+    @apply mx-auto max-w-3xl text-base leading-7 text-muted-foreground md:text-lg;
   }
 }
 

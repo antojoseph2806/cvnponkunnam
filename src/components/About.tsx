@@ -8,32 +8,8 @@ import {
   Leaf,
   MapPin,
   Quote,
-  Swords,
   Users,
 } from "lucide-react";
-
-const imageHighlights = [
-  {
-    icon: Landmark,
-    title: "Rooted in",
-    value: "Kerala Tradition",
-  },
-  {
-    icon: Swords,
-    title: "Focus on",
-    value: "Meypayattu & Self Defence",
-  },
-  {
-    icon: Flower2,
-    title: "Holistic Training",
-    value: "Body, Mind & Discipline",
-  },
-  {
-    icon: Users,
-    title: "5000+",
-    value: "Students Trained",
-  },
-];
 
 const aboutStats = [
   {
@@ -69,135 +45,143 @@ const aboutParagraphs = [
 const About = () => (
   <section
     id="about"
-    className="relative overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.98),rgba(247,250,244,0.98)_42%,rgba(242,247,238,0.98)_100%)] px-4 py-20 md:px-8 lg:px-16 xl:px-24"
+    className="relative min-h-screen overflow-hidden"
   >
+    {/* Full Background Image with Classic Overlay */}
     <div className="pointer-events-none absolute inset-0">
-      <div className="absolute left-[-4rem] bottom-16 h-64 w-64 rounded-full bg-highlight/8 blur-3xl" />
-      <div className="absolute right-[-5rem] top-10 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
-      <div className="absolute bottom-[-6rem] right-1/4 h-64 w-64 rounded-full bg-cream blur-3xl" />
-      <div className="absolute left-10 top-24 h-40 w-40 border border-highlight/12" />
-      <div className="absolute left-20 top-34 h-40 w-40 border border-highlight/10" />
-      <div className="absolute right-20 bottom-24 h-44 w-44 border border-highlight/12" />
-      <div className="absolute right-10 bottom-14 h-44 w-44 border border-highlight/10" />
-      <div className="absolute left-1/3 top-12 h-px w-40 rotate-45 bg-gradient-to-r from-transparent via-highlight/18 to-transparent" />
-      <div className="absolute left-[36%] top-16 h-px w-32 -rotate-45 bg-gradient-to-r from-transparent via-highlight/14 to-transparent" />
-      <div className="absolute right-24 bottom-36 h-px w-40 rotate-45 bg-gradient-to-r from-transparent via-highlight/18 to-transparent" />
-      <div className="absolute right-16 bottom-28 h-px w-32 -rotate-45 bg-gradient-to-r from-transparent via-highlight/14 to-transparent" />
-      <Leaf className="absolute right-6 top-4 h-20 w-20 rotate-[16deg] text-highlight/20 md:h-28 md:w-28" />
-      <Leaf className="absolute right-20 top-0 h-12 w-12 rotate-[28deg] text-highlight/15 md:h-16 md:w-16" />
-      <Leaf className="absolute right-0 top-20 h-12 w-12 -rotate-[6deg] text-highlight/10 md:h-16 md:w-16" />
+      <Image
+        src="/assets/about.png"
+        alt="Kalari Background"
+        fill
+        className="object-cover"
+        priority
+        quality={100}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
     </div>
 
-    <div className="container-narrow relative z-10">
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-start">
-        <div>
-          <div className="mb-8 flex items-center gap-4 text-highlight">
-            <div className="section-eyebrow inline-flex items-center gap-2 !text-sm md:!text-base">
-              <Leaf className="h-4 w-4" />
-              <span>C. V. N. Kalari Tradition</span>
-            </div>
-            <span className="hidden h-px flex-1 bg-gradient-to-r from-highlight/50 to-transparent md:block" />
-          </div>
+    {/* Classic Decorative Border Elements */}
+    <div className="pointer-events-none absolute inset-0">
+      {/* Corner Ornaments */}
+      <div className="absolute left-8 top-8 h-24 w-24 border-l-2 border-t-2 border-highlight-light/40" />
+      <div className="absolute right-8 top-8 h-24 w-24 border-r-2 border-t-2 border-highlight-light/40" />
+      <div className="absolute bottom-8 left-8 h-24 w-24 border-b-2 border-l-2 border-highlight-light/40" />
+      <div className="absolute bottom-8 right-8 h-24 w-24 border-b-2 border-r-2 border-highlight-light/40" />
+      
+      {/* Decorative Lines */}
+      <div className="absolute left-1/2 top-0 h-32 w-px -translate-x-1/2 bg-gradient-to-b from-highlight-light/50 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 h-32 w-px -translate-x-1/2 bg-gradient-to-t from-highlight-light/50 to-transparent" />
+    </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-white/90 bg-white/85 shadow-[0_24px_70px_-34px_rgba(26,53,34,0.35)] backdrop-blur">
-            <div className="relative">
-              <Image
-                src="/assets/about-kalari.jpg"
-                alt="AKM Sri Rudra Kalari building"
-                width={1200}
-                height={900}
-                priority={false}
-                className="h-[320px] w-full object-cover md:h-[420px] lg:h-[520px]"
-              />
-            </div>
+    <div className="relative z-10 px-4 py-16 md:px-8 lg:px-16 xl:px-24">
+      {/* Classic Header Section */}
+      <div className="mx-auto max-w-7xl text-center">
+        <div className="mb-6 flex items-center justify-center gap-4">
+          <span className="h-px w-16 bg-gradient-to-r from-transparent to-highlight-light/60" />
+          <Leaf className="h-6 w-6 text-highlight-light" />
+          <span className="text-xs uppercase tracking-wider text-highlight-light/90">C. V. N. Kalari Tradition</span>
+          <Leaf className="h-6 w-6 text-highlight-light" />
+          <span className="h-px w-16 bg-gradient-to-l from-transparent to-highlight-light/60" />
+        </div>
+        
+        <h1 className="font-heading text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+          AKM Sri Rudra
+          <span className="mt-2 block text-highlight-light">
+            Kalari
+          </span>
+        </h1>
 
-            <div className="grid grid-cols-2 bg-[linear-gradient(180deg,rgba(13,92,45,0.98),rgba(12,78,40,0.98))] text-primary-foreground md:grid-cols-4">
-              {imageHighlights.map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`flex flex-col items-center px-4 py-7 text-center ${
-                    index < imageHighlights.length - 1 ? "border-b border-white/10 md:border-b-0 md:border-r md:border-white/15" : ""
-                  }`}
+        <div className="mx-auto mt-8 flex max-w-md items-center justify-center gap-4">
+          <span className="h-px flex-1 bg-gradient-to-r from-transparent via-highlight-light/40 to-highlight-light/60" />
+          <Quote className="h-5 w-5 text-highlight-light/70" />
+          <span className="h-px flex-1 bg-gradient-to-l from-transparent via-highlight-light/40 to-highlight-light/60" />
+        </div>
+      </div>
+
+      {/* Main Content Grid */}
+      <div className="mx-auto mt-16 max-w-7xl">
+        <div className="grid grid-cols-1 gap-8 lg:gap-12">
+          {/* Content Section */}
+          <div>
+            <div className="rounded-lg border-2 border-highlight-light/30 bg-black/50 p-8 shadow-2xl backdrop-blur-md md:p-10">
+              <div className="mb-6 flex items-center gap-3">
+                <Landmark className="h-8 w-8 text-highlight-light" />
+                <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Our Heritage</h2>
+              </div>
+              
+              <div className="space-y-5 text-base leading-relaxed text-gray-200 md:text-lg">
+                {aboutParagraphs.slice(0, 2).map((paragraph, index) => (
+                  <p key={index} className="first-letter:float-left first-letter:mr-3 first-letter:text-5xl first-letter:font-bold first-letter:leading-none first-letter:text-highlight-light">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <div className="mt-8 flex items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-md border-2 border-highlight-light bg-highlight-light px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-transparent hover:text-highlight-light"
                 >
-                  <item.icon className="h-8 w-8 text-primary-foreground/95" />
-                  <p className="mt-5 text-lg font-medium">{item.title}</p>
-                  <p className="mt-1 max-w-[11rem] text-lg leading-8 text-primary-foreground/95">{item.value}</p>
+                  <Leaf className="h-4 w-4" />
+                  Contact Us
+                </Link>
+                <div className="flex items-center gap-2 text-highlight-light/70">
+                  <span className="h-px w-12 bg-highlight-light/30" />
+                  <Leaf className="h-4 w-4" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional Information Cards */}
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {aboutParagraphs.slice(2).map((paragraph, index) => (
+            <div
+              key={index}
+              className="rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:border-highlight-light/40 hover:bg-black/60"
+            >
+              <div className="mb-4 flex items-center gap-2">
+                <div className="h-1 w-8 bg-highlight-light" />
+                <Leaf className="h-4 w-4 text-highlight-light" />
+              </div>
+              <p className="text-sm leading-relaxed text-gray-300 md:text-base">{paragraph}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="mt-12 overflow-hidden rounded-lg border-2 border-highlight-light/30 bg-black/50 shadow-2xl backdrop-blur-md">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(280px,1fr)_minmax(0,2fr)]">
+            <div className="flex flex-col justify-center border-b-2 border-highlight-light/30 bg-gradient-to-br from-primary/30 to-section-dark/40 px-8 py-10 lg:border-b-0 lg:border-r-2">
+              <Quote className="h-12 w-12 text-highlight-light" />
+              <p className="mt-6 font-heading text-xl italic leading-relaxed text-white md:text-2xl">
+                "Preserving the ancient wisdom of Kalaripayattu and passing it on with pride."
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <span className="h-px w-12 bg-highlight-light/40" />
+                <Leaf className="h-5 w-5 text-highlight-light" />
+                <span className="h-px w-12 bg-highlight-light/40" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {aboutStats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`px-6 py-8 ${
+                    index < aboutStats.length - 1 ? "border-b-2 border-highlight-light/20 md:border-b-0" : ""
+                  } ${index % 2 === 0 ? "md:border-r-2 md:border-highlight-light/20" : ""}`}
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-highlight-light/40 bg-highlight-light/10">
+                    <stat.icon className="h-7 w-7 text-highlight-light" />
+                  </div>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-highlight-light/80">{stat.label}</p>
+                  <p className="mt-2 text-base font-medium leading-relaxed text-white md:text-lg">{stat.value}</p>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        <div className="pt-2 lg:pt-12">
-          <h2 className="section-title leading-none">
-            AKM Sri Rudra
-            <span className="mt-3 block text-highlight">Kalari</span>
-          </h2>
-
-          <div className="mt-6 flex items-center gap-4 text-highlight/55">
-            <span className="h-px w-20 bg-highlight/30" />
-            <Leaf className="h-4 w-4" />
-            <span className="h-px w-20 bg-highlight/20" />
-          </div>
-
-          <div className="mt-8 space-y-6">
-            {aboutParagraphs.slice(0, 2).map((paragraph) => (
-              <p key={paragraph} className="body-copy">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-lg transition-colors hover:bg-accent"
-          >
-            <Leaf className="h-4 w-4" />
-            Contact Us
-          </Link>
-        </div>
-      </div>
-
-      <div className="mt-10 grid gap-6 lg:grid-cols-3">
-        {aboutParagraphs.slice(2).map((paragraph) => (
-          <div
-            key={paragraph}
-            className="rounded-[1.35rem] border border-white/85 bg-white/72 p-6 shadow-[0_18px_44px_-32px_rgba(26,53,34,0.25)] backdrop-blur"
-          >
-            <p className="body-copy">{paragraph}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-12 overflow-hidden rounded-[1.8rem] border border-white/90 bg-white/90 shadow-[0_24px_60px_-38px_rgba(26,53,34,0.28)] backdrop-blur">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(280px,0.95fr)_minmax(0,3.05fr)]">
-          <div className="flex flex-col justify-center border-b border-border/70 px-8 py-8 lg:border-b-0 lg:border-r">
-            <Quote className="h-10 w-10 text-highlight" />
-            <p className="mt-5 max-w-xs font-heading text-3xl italic leading-[1.5] text-foreground">
-              "Preserving the ancient wisdom of Kalaripayattu and passing it on with pride."
-            </p>
-            <div className="mt-6 flex items-center gap-3 text-highlight/60">
-              <span className="h-px w-14 bg-highlight/25" />
-              <Leaf className="h-4 w-4" />
-              <span className="h-px w-14 bg-highlight/25" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-            {aboutStats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`px-7 py-8 ${
-                  index < aboutStats.length - 1 ? "border-b border-border/70 md:border-b-0 xl:border-r" : ""
-                } ${index === 1 ? "md:border-r xl:border-r" : ""} ${index === 2 ? "xl:border-r" : ""}`}
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-section-warm text-highlight">
-                  <stat.icon className="h-7 w-7" />
-                </div>
-                <p className="section-eyebrow mt-4 !text-[0.78rem]">{stat.label}</p>
-                <p className="mt-2 text-lg leading-8 text-foreground/90">{stat.value}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

@@ -1,148 +1,246 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { CheckCircle, Clock, Users, Calendar } from "lucide-react";
+import { CheckCircle, Clock, Users, Calendar, Award, Target, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Kalari Training | Sree Rudra CVN Kalari",
+  title: "One Month Intensive Kalari Training | Sree Rudra CVN Kalari",
+  description: "Transform your life with our signature 30-day intensive Kalaripayattu training program. Learn ancient martial arts, yoga, and Ayurvedic practices.",
 };
+
+const programFeatures = [
+  {
+    title: "Basic Kalari Leg Movements",
+    description: "Master foundational footwork and stances",
+  },
+  {
+    title: "Meippayattu",
+    description: "Body control and conditioning exercises",
+  },
+  {
+    title: "Weapon Training",
+    description: "Traditional Kalari weapons mastery",
+  },
+  {
+    title: "Verum Kai",
+    description: "Bare-hand self-defence techniques",
+  },
+  {
+    title: "Basic Yoga",
+    description: "Mind-body integration practices",
+  },
+  {
+    title: "Ayurvedic Massage",
+    description: "Therapeutic body treatments",
+  },
+];
+
+const programStats = [
+  {
+    icon: Clock,
+    label: "Duration",
+    value: "30 Days",
+    description: "Intensive daily training",
+  },
+  {
+    icon: Users,
+    label: "Suitable For",
+    value: "All Ages",
+    description: "Men & women welcome",
+  },
+  {
+    icon: Calendar,
+    label: "Training Type",
+    value: "Intensive",
+    description: "Comprehensive program",
+  },
+];
 
 export default function KalariTrainingPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main className="pt-[calc(2.5rem+5rem)]">
-        <section className="section-padding bg-section-warm">
-          <div className="container-narrow">
-              <div className="text-center mb-12">
-                <p className="section-eyebrow mb-2">Sree Rudra CVN Kalari</p>
-                <h2 className="page-title mb-4">
-                  One Month Intense Kalari Training Program
-                </h2>
-                <p className="page-lead max-w-3xl">
-                  Lakkoor, Kothala, Ponkunnam
-                </p>
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-section-dark to-primary py-16 md:py-20">
+          {/* Decorative Elements */}
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-[-10%] top-[-10%] h-96 w-96 rounded-full bg-highlight/20 blur-3xl" />
+            <div className="absolute right-[-10%] bottom-[-10%] h-96 w-96 rounded-full bg-highlight-light/20 blur-3xl" />
+          </div>
+
+          <div className="container-narrow relative z-10 px-4">
+            <div className="mx-auto max-w-4xl text-center">
+              {/* Badge */}
+              <div className="mb-4 inline-flex items-center gap-3 rounded-full border-2 border-white/30 bg-white/10 px-5 py-2 backdrop-blur-sm">
+                <span className="text-xs font-semibold uppercase tracking-wider text-white">
+                  Our Signature Program
+                </span>
               </div>
 
-              {/* Two Column Layout */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {/* Image Column - Takes 1/3 width */}
-                <div className="lg:col-span-1">
-                  <div className="rounded-lg overflow-hidden shadow-lg lg:sticky lg:top-32">
-                    <img 
-                      src="/one month training.jpeg" 
-                      alt="One Month Intense Kalari Training Program" 
-                      className="w-full h-auto object-cover"
+              {/* Title */}
+              <h1 className="font-heading text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+                One Month Intensive
+                <span className="mt-1 block text-highlight-light">
+                  Kalari Training Program
+                </span>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="mt-4 text-base text-white/90 md:text-lg">
+                One Ritual. One Month. A Lifetime of Change.
+              </p>
+
+              {/* Location */}
+              <p className="mt-2 text-sm text-white/80">
+                Sree Rudra CVN Kalari • Lakkoor, Kothala, Ponkunnam
+              </p>
+
+              {/* CTA Button */}
+              <div className="mt-6">
+                <a
+                  href="https://wa.me/917306901750?text=Hi%2C%20I%27m%20interested%20in%20the%20One%20Month%20Intensive%20Kalari%20Training%20Program%20at%20Sree%20Rudra%20CVN%20Kalari.%20Could%20you%20please%20share%20details%20about%20fees%2C%20schedule%2C%20and%20availability%3F%20Thank%20you."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    size="lg"
+                    className="h-auto rounded-full bg-highlight-light px-8 py-3 text-base font-bold text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-highlight"
+                  >
+                    Enroll Now - Limited Spots
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="relative -mt-12 px-4">
+          <div className="container-narrow">
+            <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-3">
+              {programStats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden rounded-xl border-2 border-white bg-white p-5 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-primary/20"
+                >
+                  <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-all duration-300 group-hover:bg-primary/10" />
+                  <div className="relative z-10 flex items-center gap-4">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-highlight">
+                      <stat.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        {stat.label}
+                      </p>
+                      <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content Section */}
+        <section className="px-4 py-16">
+          <div className="container-narrow">
+            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
+              {/* Image Column */}
+              <div className="relative">
+                <div className="sticky top-24">
+                  <div className="relative overflow-hidden rounded-xl shadow-xl">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <img
+                      src="/one month training.jpeg"
+                      alt="One Month Intensive Kalari Training Program"
+                      className="h-full w-full object-cover"
                       loading="eager"
                     />
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <div className="inline-flex items-center gap-2 rounded-full bg-highlight-light px-4 py-2">
+                        <Award className="h-4 w-4 text-white" />
+                        <span className="text-sm font-bold text-white">Featured Program</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Column */}
+              <div className="space-y-6">
+                {/* Program Overview */}
+                <div className="rounded-xl border-2 border-primary/20 bg-white p-6 shadow-lg">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                      Program Overview
+                    </span>
+                  </div>
+                  <h2 className="mb-3 font-heading text-2xl font-bold text-foreground">
+                    Transform Your Life in 30 Days
+                  </h2>
+                  <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
+                    The One Month Intensive Kalari Training Program is designed to teach the most important
+                    techniques of Kalaripayattu that would normally take nearly a year to learn. This training
+                    is beneficial for both men and women of all age groups.
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    The 30-day program is carefully structured to help participants understand Kalaripayattu
+                    more deeply while also bringing renewed energy and balance to both body and mind.
+                  </p>
+                </div>
+
+                {/* What You'll Learn */}
+                <div className="rounded-xl border-2 border-highlight/20 bg-section-warm p-6 shadow-lg">
+                  <h3 className="mb-4 font-heading text-xl font-bold text-foreground">
+                    What You'll Master
+                  </h3>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {programFeatures.map((feature, index) => (
+                      <div
+                        key={index}
+                        className="group flex items-start gap-3 rounded-lg bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                      >
+                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 transition-colors duration-300 group-hover:bg-primary">
+                          <CheckCircle className="h-4 w-4 text-primary transition-colors duration-300 group-hover:text-white" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">{feature.title}</p>
+                          <p className="text-xs text-muted-foreground">{feature.description}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Content Column - Takes 2/3 width */}
-                <div className="lg:col-span-2">
-                  <Card className="shadow-lg">
-                    <CardHeader className="bg-primary/5">
-                      <CardTitle className="text-2xl font-heading">Program Overview</CardTitle>
-                      <CardDescription className="text-base">
-                        Learn the most important techniques of Kalarippayattu in just 30 days
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-6">
-                      <p className="section-copy mb-6">
-                        The One Month Intense Kalari Training Program is designed to teach the most important techniques of Kalarippayattu that would normally take nearly a year to learn. This training is beneficial for both men and women of all age groups. The 30-day program is carefully structured to help participants understand Kalarippayattu more deeply while also bringing renewed energy and balance to both body and mind.
-                      </p>
-
-                      {/* Program Highlights */}
-                      <div className="mb-8">
-                        <h3 className="font-heading text-xl mb-4 text-foreground">What You'll Learn</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-highlight mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="font-semibold text-foreground">Basic Kalari Leg Movements</p>
-                              <p className="text-sm text-muted-foreground">Foundation techniques and footwork</p>
-                            </div>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-highlight mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="font-semibold text-foreground">Meippayattu</p>
-                              <p className="text-sm text-muted-foreground">Body control exercises</p>
-                            </div>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-highlight mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="font-semibold text-foreground">Weapon Training</p>
-                              <p className="text-sm text-muted-foreground">Traditional Kalari weapons</p>
-                            </div>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-highlight mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="font-semibold text-foreground">Verum Kai</p>
-                              <p className="text-sm text-muted-foreground">Bare-hand self-defence techniques</p>
-                            </div>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-highlight mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="font-semibold text-foreground">Basic Yoga</p>
-                              <p className="text-sm text-muted-foreground">Mind-body integration practices</p>
-                            </div>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-highlight mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="font-semibold text-foreground">Ayurvedic Body Massage</p>
-                              <p className="text-sm text-muted-foreground">For body flexibility and relaxation</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Program Details */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 p-6 bg-section-warm rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <Clock className="w-8 h-8 text-highlight" />
-                          <div>
-                            <p className="text-sm text-muted-foreground">Duration</p>
-                            <p className="font-semibold text-foreground">30 Days</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <Users className="w-8 h-8 text-highlight" />
-                          <div>
-                            <p className="text-sm text-muted-foreground">Suitable For</p>
-                            <p className="font-semibold text-foreground">All Age Groups</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <Calendar className="w-8 h-8 text-highlight" />
-                          <div>
-                            <p className="text-sm text-muted-foreground">Training Type</p>
-                            <p className="font-semibold text-foreground">Intensive Program</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Booking Button */}
-                      <div className="text-center pt-4">
-                        <a href="https://wa.me/917306901750?text=Hi%2C%20I%27m%20interested%20in%20the%20One%20Month%20Intensive%20Kalari%20Training%20Program%20at%20Sree%20Rudra%20CVN%20Kalari.%20Could%20you%20please%20share%20details%20about%20fees%2C%20schedule%2C%20and%20availability%3F%20Thank%20you." target="_blank" rel="noopener noreferrer">
-                          <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground px-8 py-6 text-lg font-semibold">
-                            Book Your Training Program
-                          </Button>
-                        </a>
-                        <p className="text-sm text-muted-foreground mt-4">
-                          Contact us to reserve your spot or learn more about the program
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                {/* CTA Section */}
+                <div className="rounded-xl bg-gradient-to-br from-primary via-section-dark to-primary p-6 text-center shadow-xl">
+                  <h3 className="mb-2 font-heading text-xl font-bold text-white">
+                    Ready to Begin Your Journey?
+                  </h3>
+                  <p className="mb-4 text-sm text-white/90">
+                    Join hundreds of students who have transformed their lives through this intensive program.
+                  </p>
+                  <a
+                    href="https://wa.me/917306901750?text=Hi%2C%20I%27m%20interested%20in%20the%20One%20Month%20Intensive%20Kalari%20Training%20Program%20at%20Sree%20Rudra%20CVN%20Kalari.%20Could%20you%20please%20share%20details%20about%20fees%2C%20schedule%2C%20and%20availability%3F%20Thank%20you."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      size="lg"
+                      className="h-auto rounded-full bg-highlight-light px-6 py-3 text-sm font-bold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-highlight"
+                    >
+                      Contact Us on WhatsApp
+                    </Button>
+                  </a>
+                  <p className="mt-3 text-xs text-white/80">
+                    Limited spots available • Early booking recommended
+                  </p>
                 </div>
               </div>
+            </div>
           </div>
         </section>
       </main>
