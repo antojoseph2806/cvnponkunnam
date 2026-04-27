@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Droplets, CheckCircle } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -19,10 +18,10 @@ export default function KalariRejuvenationPage() {
           <div className="container-narrow">
             <div className="text-center mb-12">
               <Droplets className="w-16 h-16 text-highlight mx-auto mb-4" />
-              <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-4">
+              <h1 className="page-title mb-4">
                 Kalari Rejuvenation
               </h1>
-              <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+              <p className="page-lead">
                 Traditional massage therapy for complete wellness
               </p>
             </div>
@@ -35,12 +34,12 @@ export default function KalariRejuvenationPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-6">
-                <p className="text-muted-foreground leading-relaxed mb-6">
+                <p className="section-copy mb-6">
                   Kalari massage with herbal oils is applied according to a person's body structure and nerve points in order to enhance mind-strength, joy, health and flexibility of muscles. This ancient practice combines therapeutic touch with specially prepared herbal oils for complete rejuvenation.
                 </p>
 
                 <div className="mb-8">
-                  <h3 className="font-heading text-xl mb-4 text-foreground">Benefits of Kalari Massage</h3>
+                  <h3 className="font-heading text-2xl mb-4 text-foreground">Benefits of Kalari Massage</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-highlight mt-0.5 flex-shrink-0" />

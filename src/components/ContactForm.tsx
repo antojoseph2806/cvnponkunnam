@@ -43,10 +43,11 @@ const ContactForm = () => {
     <section className="section-padding bg-section-warm">
       <div className="container-narrow">
         <div className="text-center mb-12">
-          <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-4">
+          <p className="section-eyebrow">Contact</p>
+          <h1 className="page-title mb-4 mt-3">
             Get In Touch
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="page-lead max-w-2xl">
             Have questions about our programs or want to book a session? Fill out the form below and we'll get back to you as soon as possible.
           </p>
         </div>

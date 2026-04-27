@@ -33,7 +33,8 @@ const Testimonials = () => {
   return (
     <section className="section-padding bg-section-dark text-primary-foreground">
       <div className="container-narrow text-center">
-        <h2 className="font-heading text-3xl md:text-4xl mb-12">Testimonials</h2>
+        <p className="section-eyebrow text-primary-foreground/70">Testimonials</p>
+        <h2 className="section-title mb-12 mt-3 text-primary-foreground">Testimonials</h2>
         <div className="relative max-w-3xl mx-auto">
           <Quote className="w-12 h-12 text-highlight-light mx-auto mb-6 opacity-60" />
           <p className="text-lg md:text-xl leading-relaxed mb-8 italic text-primary-foreground/90 min-h-[120px]">

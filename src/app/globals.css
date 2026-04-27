@@ -112,5 +112,29 @@
   .container-narrow {
     @apply max-w-7xl mx-auto;
   }
+  .section-eyebrow {
+    @apply text-highlight text-[0.72rem] font-semibold uppercase tracking-[0.28em];
+  }
+  .section-title {
+    @apply font-heading text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl;
+  }
+  .section-title-sm {
+    @apply font-heading text-3xl leading-tight text-foreground md:text-4xl lg:text-5xl;
+  }
+  .section-lead {
+    @apply text-base leading-8 text-muted-foreground md:text-lg;
+  }
+  .section-copy {
+    @apply text-base leading-8 text-muted-foreground;
+  }
+  .body-copy {
+    @apply text-base leading-8 text-muted-foreground;
+  }
+  .page-title {
+    @apply font-heading text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl;
+  }
+  .page-lead {
+    @apply mx-auto max-w-3xl text-base leading-8 text-muted-foreground md:text-lg;
+  }
 }
 

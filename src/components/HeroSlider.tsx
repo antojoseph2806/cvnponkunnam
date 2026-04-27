@@ -51,10 +51,10 @@ const HeroSlider = () => {
       ))}
       <div className="relative z-10 flex items-center h-full px-6 md:px-16 lg:px-24 max-w-4xl">
         <div className="animate-fade-in">
-          <p className="text-primary-foreground/80 text-xs md:text-sm tracking-[0.2em] mb-4 font-body uppercase">
+          <p className="section-eyebrow mb-4 text-primary-foreground/80">
             {slides[current].subtitle}
           </p>
-          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl text-primary-foreground leading-tight">
+          <h1 className="font-heading text-4xl leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
             {slides[current].title}
           </h1>
         </div>

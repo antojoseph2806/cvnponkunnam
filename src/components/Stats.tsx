@@ -46,7 +46,7 @@ const StatItem = ({ value, suffix, label }: { value: number; suffix: string; lab
         {count}
         <span>{suffix}</span>
       </p>
-      <p className="text-sm mt-2 text-primary-foreground/70 tracking-wide">{label}</p>
+      <p className="section-eyebrow mt-2 text-primary-foreground/70">{label}</p>
     </div>
   );
 };

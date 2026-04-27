@@ -20,7 +20,7 @@ export default function HomePage() {
         <Services />
         <About />
         <Testimonials />
-        <Gallery />
+        <Gallery previewCount={6} />
         <Locations />
         <Stats />
       </main>

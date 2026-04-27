@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CheckCircle, Clock, Users, Calendar } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -18,11 +17,11 @@ export default function KalariTrainingPage() {
         <section className="section-padding bg-section-warm">
           <div className="container-narrow">
               <div className="text-center mb-12">
-                <p className="text-highlight font-semibold text-sm tracking-wide mb-2">Sree Rudra CVN Kalari</p>
-                <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">
+                <p className="section-eyebrow mb-2">Sree Rudra CVN Kalari</p>
+                <h2 className="page-title mb-4">
                   One Month Intense Kalari Training Program
                 </h2>
-                <p className="text-muted-foreground max-w-3xl mx-auto">
+                <p className="page-lead max-w-3xl">
                   Lakkoor, Kothala, Ponkunnam
                 </p>
               </div>
@@ -51,7 +50,7 @@ export default function KalariTrainingPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <p className="text-muted-foreground leading-relaxed mb-6">
+                      <p className="section-copy mb-6">
                         The One Month Intense Kalari Training Program is designed to teach the most important techniques of Kalarippayattu that would normally take nearly a year to learn. This training is beneficial for both men and women of all age groups. The 30-day program is carefully structured to help participants understand Kalarippayattu more deeply while also bringing renewed energy and balance to both body and mind.
                       </p>
 
