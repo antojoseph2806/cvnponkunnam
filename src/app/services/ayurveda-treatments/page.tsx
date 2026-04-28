@@ -35,7 +35,7 @@ export default function AyurvedaTreatmentsPage() {
               </CardHeader>
               <CardContent className="pt-6">
                 <p className="section-copy mb-6">
-                  At EP Vasudeva Gurukkal's CVN Ayurveda Kalari, we have an exclusive section for Ayurvedic Treatments. All the medicaments are prepared out of herbs hand-picked from the plant kingdom, ensuring the highest quality and authenticity in every treatment.
+                  At A. K. M Sri Rudra C. V. N. Kalari, we have an exclusive section for Ayurvedic Treatments. All the medicaments are prepared out of herbs hand-picked from the plant kingdom, ensuring the highest quality and authenticity in every treatment.
                 </p>
 
                 <div className="mb-8">

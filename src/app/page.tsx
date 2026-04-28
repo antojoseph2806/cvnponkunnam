@@ -9,8 +9,11 @@ import Locations from "@/components/Locations";
 import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
 import StickyContactButtons from "@/components/StickyContactButtons";
+import { getGalleryImages } from "@/lib/gallery";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const images = await getGalleryImages();
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -20,7 +23,7 @@ export default function HomePage() {
         <Services />
         <About />
         <Testimonials />
-        <Gallery previewCount={6} />
+        <Gallery images={images} previewCount={6} />
         <Locations />
         <Stats />
       </main>

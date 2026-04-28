@@ -17,7 +17,7 @@ const services = [
     icon: Leaf,
     title: "Ayurveda Treatments",
     description:
-      "At EP Vasudeva Gurukkal's CVN Ayurveda Kalari, we have an exclusive section for Ayurvedic treatments prepared from herbs hand-picked from the plant kingdom.",
+      "At A. K. M Sri Rudra C. V. N. Kalari, we have an exclusive section for Ayurvedic treatments prepared from herbs hand-picked from the plant kingdom.",
     link: "/services/ayurveda-treatments",
   },
   {

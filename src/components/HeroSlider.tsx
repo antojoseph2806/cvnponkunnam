@@ -4,22 +4,13 @@ import { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "/assets/hero-martial-art.jpg",
-    subtitle: "EXPERIENCE THE TRANSFORMATIVE POWER OF KALARIPAYATTU",
-    title: (
-      <>
-        <em>Learn</em> Kalaripayattu: The Ancient <em>Martial Art of Kerala</em>
-      </>
-    ),
+    image: "/assets/slider/sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-ku9w7012s2.avif",
   },
   {
-    image: "/assets/hero-ayurveda.jpg",
-    subtitle: "DISCOVER THE HEALING POWER OF ANCIENT AYURVEDIC PRACTICES",
-    title: (
-      <>
-        Ayurveda Kalari Treatments: Your Path to <em>Natural Healing</em>
-      </>
-    ),
+    image: "/assets/slider/sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-o84fvltnk6.avif",
+  },
+  {
+    image: "/assets/slider/sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-w49urb95z2.avif",
   },
 ];
 
@@ -46,19 +37,8 @@ const HeroSlider = () => {
             height={1080}
             {...(i === 0 ? {} : { loading: "lazy" as const })}
           />
-          <div className="absolute inset-0 bg-[hsl(var(--hero-overlay)/0.55)]" />
         </div>
       ))}
-      <div className="relative z-10 flex items-center h-full px-6 md:px-16 lg:px-24 max-w-4xl">
-        <div className="animate-fade-in">
-          <p className="section-eyebrow mb-4 text-primary-foreground/80">
-            {slides[current].subtitle}
-          </p>
-          <h1 className="font-heading text-4xl leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
-            {slides[current].title}
-          </h1>
-        </div>
-      </div>
 
       {/* Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
@@ -66,7 +46,7 @@ const HeroSlider = () => {
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-3 h-3 rounded-full transition-all ${i === current ? "bg-primary-foreground scale-110" : "bg-primary-foreground/40"}`}
+            className={`w-3 h-3 rounded-full transition-all ${i === current ? "bg-white scale-110" : "bg-white/40"}`}
           />
         ))}
       </div>
