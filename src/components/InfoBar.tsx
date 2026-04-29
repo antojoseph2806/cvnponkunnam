@@ -1,4 +1,5 @@
 import { MapPin, Phone, Clock } from "lucide-react";
+import { CONTACT_PHONE_DISPLAY } from "@/lib/contact";
 
 const InfoBar = () => (
   <section className="bg-section-dark text-primary-foreground py-6 px-4 md:px-8">
@@ -10,8 +11,8 @@ const InfoBar = () => (
       </div>
       <div className="flex flex-col items-center gap-2">
         <Phone className="w-8 h-8 text-highlight-light" />
-        <p className="font-semibold">+91 8075 484 602</p>
-        <p className="text-sm text-primary-foreground/70">+91 73069 01750</p>
+        <p className="font-semibold">{CONTACT_PHONE_DISPLAY}</p>
+        <p className="text-sm text-primary-foreground/70">Call &amp; WhatsApp</p>
       </div>
       <div className="flex flex-col items-center gap-2">
         <Clock className="w-8 h-8 text-highlight-light" />

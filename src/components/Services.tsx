@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { buildWhatsAppHref } from "@/lib/contact";
 
 const services = [
   {
@@ -178,7 +179,7 @@ const Services = () => (
               </Button>
             </Link>
             <a
-              href="https://wa.me/917306901750?text=Hi%2C%20I%27m%20interested%20in%20the%20One%20Month%20Intensive%20Kalari%20Training%20Program%20at%20Sree%20Rudra%20CVN%20Kalari.%20Could%20you%20please%20share%20details%20about%20fees%2C%20schedule%2C%20and%20availability%3F%20Thank%20you."
+              href={buildWhatsAppHref("Hi, I'm interested in the One Month Intensive Kalari Training Program at Sree Rudra CVN Kalari. Could you please share details about fees, schedule, and availability? Thank you.")}
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Droplets, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { buildWhatsAppHref } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Kalari Rejuvenation | Sree Rudra CVN Kalari",
@@ -73,7 +74,7 @@ export default function KalariRejuvenationPage() {
                 </div>
 
                 <div className="text-center pt-4">
-                  <a href="https://wa.me/917306901750?text=Hi,%20I%20would%20like%20to%20book%20a%20Kalari%20Rejuvenation%20massage%20session" target="_blank" rel="noopener noreferrer">
+                  <a href={buildWhatsAppHref("Hi, I would like to book a Kalari Rejuvenation massage session")} target="_blank" rel="noopener noreferrer">
                     <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground px-8 py-6 text-lg font-semibold">
                       Book Your Massage Session
                     </Button>

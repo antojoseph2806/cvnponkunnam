@@ -23,7 +23,10 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <section id="home" className="relative h-[90vh] min-h-[600px] overflow-hidden">
+    <section
+      id="home"
+      className="relative h-[60vh] min-h-[320px] max-h-[520px] overflow-hidden bg-[hsl(var(--hero-overlay))] md:h-[90vh] md:min-h-[600px] md:max-h-none"
+    >
       {slides.map((slide, i) => (
         <div
           key={i}
@@ -32,7 +35,7 @@ const HeroSlider = () => {
           <img
             src={slide.image}
             alt=""
-            className="w-full h-full object-cover"
+            className="h-full w-full object-contain md:object-cover"
             width={1920}
             height={1080}
             {...(i === 0 ? {} : { loading: "lazy" as const })}
@@ -41,7 +44,7 @@ const HeroSlider = () => {
       ))}
 
       {/* Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-8">
         {slides.map((_, i) => (
           <button
             key={i}

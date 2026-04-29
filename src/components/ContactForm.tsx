@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { CONTACT_PHONE_DISPLAY, CONTACT_TEL_HREF, CONTACT_WHATSAPP_HREF } from "@/lib/contact";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -81,11 +82,11 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
-                    <a href="tel:+918075484602" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
-                      +91 8075 484 602
+                    <a href={CONTACT_TEL_HREF} className="text-sm text-muted-foreground hover:text-primary transition-colors block">
+                      {CONTACT_PHONE_DISPLAY}
                     </a>
-                    <a href="tel:+917306901750" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
-                      +91 73069 01750 (WhatsApp, Call)
+                    <a href={CONTACT_WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors block">
+                      WhatsApp: {CONTACT_PHONE_DISPLAY}
                     </a>
                   </div>
                 </div>

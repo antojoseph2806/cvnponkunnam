@@ -2,6 +2,7 @@
 
 import { ChevronUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import { CONTACT_TEL_HREF, CONTACT_WHATSAPP_HREF } from "@/lib/contact";
 
 const StickyContactButtons = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -23,7 +24,7 @@ const StickyContactButtons = () => {
     <div className="fixed right-4 bottom-4 z-50 flex flex-col gap-2">
       {/* Call Button */}
       <a
-        href="tel:+918075484602"
+        href={CONTACT_TEL_HREF}
         className="bg-[#1877F2] hover:bg-[#0d5dbf] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
         aria-label="Call us"
       >
@@ -61,7 +62,7 @@ const StickyContactButtons = () => {
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/917306901750"
+        href={CONTACT_WHATSAPP_HREF}
         target="_blank"
         rel="noopener noreferrer"
         className="bg-[#25D366] hover:bg-[#20ba5a] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
