@@ -25,34 +25,25 @@ const HeroSlider = () => {
   return (
     <section
       id="home"
-      className="relative h-[60vh] min-h-[320px] max-h-[520px] overflow-hidden bg-[hsl(var(--hero-overlay))] md:h-[90vh] md:min-h-[600px] md:max-h-none"
+      className="relative overflow-hidden md:h-[90vh] md:min-h-[600px] md:max-h-none md:bg-[hsl(var(--hero-overlay))]"
     >
       {slides.map((slide, i) => (
         <div
           key={i}
-          className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? "opacity-100" : "opacity-0"}`}
+          className={`transition-opacity duration-1000 ${
+            i === current ? "block opacity-100" : "hidden opacity-0"
+          } md:absolute md:inset-0 md:block ${i === current ? "md:opacity-100" : "md:opacity-0"}`}
         >
           <img
             src={slide.image}
             alt=""
-            className="h-full w-full object-contain md:object-cover"
+            className="block w-full h-auto md:h-full md:w-full md:object-cover"
             width={1920}
             height={1080}
             {...(i === 0 ? {} : { loading: "lazy" as const })}
           />
         </div>
       ))}
-
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-8">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-3 h-3 rounded-full transition-all ${i === current ? "bg-white scale-110" : "bg-white/40"}`}
-          />
-        ))}
-      </div>
     </section>
   );
 };
