@@ -21,7 +21,7 @@ export default async function HomePage() {
         <HeroSlider />
         <InfoBar />
         <Services />
-        <About />
+        <About variant="home" />
         <Testimonials />
         <Gallery images={images} previewCount={6} />
         <Locations />

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  CheckCircle2,
   Flower2,
   Globe2,
   GraduationCap,
@@ -11,11 +12,15 @@ import {
   Users,
 } from "lucide-react";
 
+type AboutProps = {
+  variant?: "home" | "full";
+};
+
 const aboutStats = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Lakkoor, Kothala, Ponkunnam, Kottayam, Kerala",
+    value: "Lakkattoor, Kottayam, Kerala",
   },
   {
     icon: GraduationCap,
@@ -34,15 +39,37 @@ const aboutStats = [
   },
 ];
 
-const aboutParagraphs = [
-  "AKM Sri Rudra (C. V. N. Kalari) is situated in Lakkoor, Kothala, Ponkunnam, Kottayam and is close to famous tourist centres like Kumarakom and Wazamon. Ajithkumar Gurukkal, the founder of this kalari, was the student of Malabar Vasudeva Gurukkal who belongs to the C. V. N. tradition. He established it in 1996, after having first learnt under his father Karunakaran Nair too.",
-  "Sri Rudra is a kuzhi kalari and it focuses on Meypayattu, Self defence and weapon training which is the cornerstone of the Northern style. Besides daily Kalaripayattu classes are done in morning and evening, it offers yoga classes as well. Children from the age of seven are taken in for training programmes. No upper age limit has been fixed to induct interested pupils.",
-  "According to a rough estimate, Sri Rudra must have trained at least 5,000 students in Kalaripayattu by now. Women too enrol themselves for his courses, most of whom are physical education instructors at schools. Foreign students from countries like Japan, Switzerland and USA have come here and signed up for short courses. Most prefer short-term programmes such as (1 month courses).",
-  "Gurukkal travels all over Kerala and India to give Kalaripayattu performances in front of invited audiences, and participates in cultural events as well. Students are given massage treatment and Marmachikitsa in the month of Kartidakam (July-August). Many foreigners also come here for treatment or rejuvenation therapies.",
-  "All the oils required for massage and treatment are manufactured here itself. Accommodation facilities for up to inpatient are available, along with Kerala food. Sri Rudra Kalari is a recipient of the Membership Certificate issued by Responsible Tourism Mission of the Government of Kerala. As it is a member of the Arts and Cultural Forum of Responsible Tourism Mission, many foreign tourists flock towards the kalari to watch the performances conducted there.",
+const homeParagraphs = [
+  "Welcome to AKM Sree Rudra Kalari, a distinguished center of Kalaripayattu, Marma Chikilsa, traditional wellness, and cultural heritage in the serene village of Lakkattoor, Kottayam, Kerala.",
+  "Established in 1996, our kalari preserves Kerala's warrior and healing traditions through authentic Northern Style Kalaripayattu, therapeutic bodywork, wellness education, and compassionate guidance.",
 ];
 
-const About = () => (
+const fullIntroParagraphs = [
+  "Welcome to AKM Sree Rudra Kalari, a distinguished center of Kalaripayattu, Marma Chikilsa, traditional wellness, and cultural heritage located in the serene village of Lakkattoor, Kottayam, Kerala. Rooted in the timeless wisdom of Kerala's warrior traditions, our kalari is more than a place of training. It is a living sanctuary where discipline, healing, movement, and inner transformation come together.",
+  "Established in 1996, AKM Sree Rudra Kalari has grown into one of Kerala's respected institutions for authentic Northern Style Kalaripayattu, therapeutic bodywork, and wellness education. With decades of dedication, thousands of trained students, and visitors from across the world, we proudly preserve one of India's treasured martial and healing systems for future generations.",
+];
+
+const gurukkalParagraphs = [
+  "AKM Sree Rudra Kalari is founded and functions under the leadership of Ajithkumar Gurukkal, a dedicated practitioner, teacher, and preserver of Kerala's martial and healing traditions.",
+  "Having received rigorous training under the guidance of the respected Malabar Vasudeva Gurukkal of the esteemed C.V.N. tradition, Ajithkumar Gurukkal has devoted his life to the disciplined transmission of authentic Kalaripayattu, Marmachikitsa, Ayurvedic therapy, and Kalari wellness practices.",
+  "For nearly three decades, he has trained thousands of students from Kerala, other Indian states, and several foreign countries, guiding each learner not only in martial techniques, but also in the deeper values of concentration, humility, courage, healing, and self-mastery.",
+  "Under his leadership, AKM Sree Rudra Kalari has evolved into a destination where traditional knowledge is preserved with authenticity and offered with compassionate care.",
+];
+
+const gurukkalExpertise = [
+  "Marma therapy",
+  "Kalari Uzhichil rejuvenation massage",
+  "Ayurvedic wellness consultation",
+  "Yoga-based flexibility training",
+  "Heritage cultural performances",
+];
+
+const kuzhiKalariParagraphs = [
+  "Our training center is built in the traditional Kuzhi Kalari style, a sacred sunken arena constructed according to ancient principles. This unique space is designed to cultivate focus, humility, discipline, and energy alignment while students train in an environment deeply connected to tradition.",
+  "Within this sacred training ground, students experience the original atmosphere of Kerala's warrior heritage while learning directly through structured practice and guided mentorship.",
+];
+
+const About = ({ variant = "home" }: AboutProps) => (
   <section
     id="about"
     className="relative min-h-screen overflow-hidden"
@@ -86,9 +113,9 @@ const About = () => (
         </div>
         
         <h1 className="font-heading text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
-          AKM Sri Rudra
+          {variant === "full" ? "About" : "AKM Sree Rudra"}
           <span className="mt-2 block text-highlight-light">
-            Kalari
+            {variant === "full" ? "AKM Sree Rudra Kalari" : "Kalari"}
           </span>
         </h1>
 
@@ -107,11 +134,13 @@ const About = () => (
             <div className="rounded-lg border-2 border-highlight-light/30 bg-black/50 p-8 shadow-2xl backdrop-blur-md md:p-10">
               <div className="mb-6 flex items-center gap-3">
                 <Landmark className="h-8 w-8 text-highlight-light" />
-                <h2 className="font-heading text-xl font-bold text-white md:text-2xl">Our Heritage</h2>
+                <h2 className="font-heading text-xl font-bold text-white md:text-2xl">
+                  {variant === "full" ? "A Legacy of Strength, Tradition & Holistic Healing" : "Our Heritage"}
+                </h2>
               </div>
               
               <div className="space-y-5 text-base leading-relaxed text-gray-200 md:text-lg">
-                {aboutParagraphs.slice(0, 2).map((paragraph, index) => (
+                {(variant === "full" ? fullIntroParagraphs : homeParagraphs).map((paragraph, index) => (
                   <p key={index} className="first-letter:float-left first-letter:mr-3 first-letter:text-5xl first-letter:font-bold first-letter:leading-none first-letter:text-highlight-light">
                     {paragraph}
                   </p>
@@ -120,11 +149,11 @@ const About = () => (
 
               <div className="mt-8 flex items-center gap-4">
                 <Link
-                  href="/contact"
+                  href={variant === "full" ? "/contact" : "/about"}
                   className="inline-flex items-center gap-2 rounded-md border-2 border-highlight-light bg-highlight-light px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-transparent hover:text-highlight-light"
                 >
                   <Leaf className="h-4 w-4" />
-                  Contact Us
+                  {variant === "full" ? "Contact Us" : "Read More"}
                 </Link>
                 <div className="flex items-center gap-2 text-highlight-light/70">
                   <span className="h-px w-12 bg-highlight-light/30" />
@@ -135,21 +164,50 @@ const About = () => (
           </div>
         </div>
 
-        {/* Additional Information Cards */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {aboutParagraphs.slice(2).map((paragraph, index) => (
-            <div
-              key={index}
-              className="rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:border-highlight-light/40 hover:bg-black/60"
-            >
-              <div className="mb-4 flex items-center gap-2">
-                <div className="h-1 w-8 bg-highlight-light" />
-                <Leaf className="h-4 w-4 text-highlight-light" />
+        {variant === "full" ? (
+          <div className="mt-12 grid items-start gap-6 lg:grid-cols-2">
+            <div className="self-start rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:border-highlight-light/40 hover:bg-black/60 md:p-8">
+              <div className="mb-4 flex items-center gap-3">
+                <Flower2 className="h-6 w-6 text-highlight-light" />
+                <h3 className="font-heading text-xl font-bold text-white md:text-2xl">Our Gurukkal</h3>
               </div>
-              <p className="text-sm leading-relaxed text-gray-300 md:text-base">{paragraph}</p>
+              <p className="mb-4 text-lg font-semibold text-highlight-light">Ajithkumar Gurukkal</p>
+              <div className="space-y-4 text-sm leading-relaxed text-gray-300 md:text-base">
+                {gurukkalParagraphs.slice(0, 3).map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+              <div className="mt-6 rounded-lg border border-highlight-light/20 bg-black/30 p-5">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-highlight-light/80">
+                  Areas of Expertise
+                </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {gurukkalExpertise.map((item) => (
+                    <div key={item} className="flex items-start gap-2 text-sm text-gray-200 md:text-base">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-highlight-light" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="mt-6 text-sm leading-relaxed text-gray-300 md:text-base">
+                {gurukkalParagraphs[3]}
+              </p>
             </div>
-          ))}
-        </div>
+
+            <div className="self-start rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:border-highlight-light/40 hover:bg-black/60 md:p-8">
+              <div className="mb-4 flex items-center gap-3">
+                <Flower2 className="h-6 w-6 text-highlight-light" />
+                <h3 className="font-heading text-xl font-bold text-white md:text-2xl">Our Traditional Kuzhi Kalari</h3>
+              </div>
+              <div className="space-y-4 text-sm leading-relaxed text-gray-300 md:text-base">
+                {kuzhiKalariParagraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         {/* Stats Section */}
         <div className="mt-12 overflow-hidden rounded-lg border-2 border-highlight-light/30 bg-black/50 shadow-2xl backdrop-blur-md">

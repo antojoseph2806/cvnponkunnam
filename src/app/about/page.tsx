@@ -4,7 +4,7 @@ import About from "@/components/About";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About | CVN Kalari Kaduthuruthy",
+  title: "About | AKM Sree Rudra Kalari",
 };
 
 export default function AboutPage() {
@@ -12,7 +12,7 @@ export default function AboutPage() {
     <div className="min-h-screen">
       <Header />
       <main className="pt-20">
-        <About />
+        <About variant="full" />
       </main>
       <Footer />
     </div>
