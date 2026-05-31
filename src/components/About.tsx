@@ -82,7 +82,7 @@ const About = ({ variant = "home" }: AboutProps) => (
         fill
         className="object-cover"
         priority
-        quality={100}
+        quality={95}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/70" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
@@ -103,7 +103,7 @@ const About = ({ variant = "home" }: AboutProps) => (
 
     <div className="relative z-10 px-4 py-16 md:px-8 lg:px-16 xl:px-24">
       {/* Classic Header Section */}
-      <div className="mx-auto max-w-7xl text-center">
+      <div className="motion-reveal motion-fade-up motion-delay-1 mx-auto max-w-7xl text-center">
         <div className="mb-6 flex items-center justify-center gap-4">
           <span className="h-px w-16 bg-gradient-to-r from-transparent to-highlight-light/60" />
           <Leaf className="h-6 w-6 text-highlight-light" />
@@ -131,7 +131,7 @@ const About = ({ variant = "home" }: AboutProps) => (
         <div className="grid grid-cols-1 gap-8 lg:gap-12">
           {/* Content Section */}
           <div>
-            <div className="rounded-lg border-2 border-highlight-light/30 bg-black/50 p-8 shadow-2xl backdrop-blur-md md:p-10">
+            <div className="motion-reveal motion-fade-right motion-delay-2 rounded-lg border-2 border-highlight-light/30 bg-black/50 p-8 shadow-2xl backdrop-blur-md md:p-10">
               <div className="mb-6 flex items-center gap-3">
                 <Landmark className="h-8 w-8 text-highlight-light" />
                 <h2 className="font-heading text-xl font-bold text-white md:text-2xl">
@@ -150,7 +150,7 @@ const About = ({ variant = "home" }: AboutProps) => (
               <div className="mt-8 flex items-center gap-4">
                 <Link
                   href={variant === "full" ? "/contact" : "/about"}
-                  className="inline-flex items-center gap-2 rounded-md border-2 border-highlight-light bg-highlight-light px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-transparent hover:text-highlight-light"
+                  className="pest-btn-sweep inline-flex items-center gap-2 rounded-md border-2 border-highlight-light bg-highlight-light px-6 py-3 font-semibold text-white shadow-lg"
                 >
                   <Leaf className="h-4 w-4" />
                   {variant === "full" ? "Contact Us" : "Read More"}
@@ -166,7 +166,7 @@ const About = ({ variant = "home" }: AboutProps) => (
 
         {variant === "full" ? (
           <div className="mt-12 grid items-start gap-6 lg:grid-cols-2">
-            <div className="self-start rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:border-highlight-light/40 hover:bg-black/60 md:p-8">
+            <div className="motion-reveal motion-fade-left motion-delay-2 self-start rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:-translate-y-2 hover:border-highlight-light/40 hover:bg-black/60 md:p-8">
               <div className="mb-4 flex items-center gap-3">
                 <Flower2 className="h-6 w-6 text-highlight-light" />
                 <h3 className="font-heading text-xl font-bold text-white md:text-2xl">Our Gurukkal</h3>
@@ -195,7 +195,7 @@ const About = ({ variant = "home" }: AboutProps) => (
               </p>
             </div>
 
-            <div className="self-start rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:border-highlight-light/40 hover:bg-black/60 md:p-8">
+            <div className="motion-reveal motion-fade-right motion-delay-3 self-start rounded-lg border-2 border-highlight-light/20 bg-black/50 p-6 shadow-xl backdrop-blur-md transition-all hover:-translate-y-2 hover:border-highlight-light/40 hover:bg-black/60 md:p-8">
               <div className="mb-4 flex items-center gap-3">
                 <Flower2 className="h-6 w-6 text-highlight-light" />
                 <h3 className="font-heading text-xl font-bold text-white md:text-2xl">Our Traditional Kuzhi Kalari</h3>
@@ -210,7 +210,7 @@ const About = ({ variant = "home" }: AboutProps) => (
         ) : null}
 
         {/* Stats Section */}
-        <div className="mt-12 overflow-hidden rounded-lg border-2 border-highlight-light/30 bg-black/50 shadow-2xl backdrop-blur-md">
+        <div className="motion-reveal motion-fade-up motion-delay-3 mt-12 overflow-hidden rounded-lg border-2 border-highlight-light/30 bg-black/50 shadow-2xl backdrop-blur-md">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(280px,1fr)_minmax(0,2fr)]">
             <div className="flex flex-col justify-center border-b-2 border-highlight-light/30 bg-gradient-to-br from-primary/30 to-section-dark/40 px-8 py-10 lg:border-b-0 lg:border-r-2">
               <Quote className="h-12 w-12 text-highlight-light" />

@@ -38,10 +38,10 @@ const useCountUp = (end: number, duration = 2000) => {
   return { count, ref };
 };
 
-const StatItem = ({ value, suffix, label }: { value: number; suffix: string; label: string }) => {
+const StatItem = ({ value, suffix, label, index }: { value: number; suffix: string; label: string; index: number }) => {
   const { count, ref } = useCountUp(value);
   return (
-    <div ref={ref} className="text-center">
+    <div ref={ref} className={`motion-reveal motion-fade-up motion-delay-${index + 1} text-center`}>
       <p className="font-heading text-4xl md:text-5xl text-highlight-light">
         {count}
         <span>{suffix}</span>
@@ -54,8 +54,8 @@ const StatItem = ({ value, suffix, label }: { value: number; suffix: string; lab
 const Stats = () => (
   <section className="py-16 px-4 bg-section-dark text-primary-foreground">
     <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-      {stats.map((s) => (
-        <StatItem key={s.label} {...s} />
+      {stats.map((s, index) => (
+        <StatItem key={s.label} index={index} {...s} />
       ))}
     </div>
   </section>

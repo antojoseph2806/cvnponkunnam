@@ -103,6 +103,20 @@
   .font-body {
     font-family: "Lato", sans-serif;
   }
+  .kalari-display {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  .kalari-tech-label {
+    font-family: "Lato", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
 }
 
 @layer components {
@@ -135,6 +149,512 @@
   }
   .page-lead {
     @apply mx-auto max-w-3xl text-base leading-7 text-muted-foreground md:text-lg;
+  }
+}
+
+@layer utilities {
+  .motion-delay-1 {
+    --motion-delay: 0.1s;
+  }
+  .motion-delay-2 {
+    --motion-delay: 0.25s;
+  }
+  .motion-delay-3 {
+    --motion-delay: 0.4s;
+  }
+  .motion-delay-4 {
+    --motion-delay: 0.55s;
+  }
+  .motion-delay-5 {
+    --motion-delay: 0.7s;
+  }
+  .motion-delay-6 {
+    --motion-delay: 0.85s;
+  }
+  .motion-delay-7 {
+    --motion-delay: 1s;
+  }
+  .motion-delay-8 {
+    --motion-delay: 1.15s;
+  }
+}
+
+@layer components {
+  .motion-reveal {
+    --motion-delay: 0s;
+    --motion-duration: 1s;
+  }
+
+  .motion-ready .motion-reveal {
+    opacity: 0;
+  }
+
+  .motion-reveal.is-visible {
+    animation-delay: var(--motion-delay);
+    animation-duration: var(--motion-duration);
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+  }
+
+  .motion-reveal.is-visible.motion-fade-in {
+    animation-name: pestFadeIn;
+  }
+
+  .motion-reveal.is-visible.motion-fade-up {
+    animation-name: pestFadeInUp;
+  }
+
+  .motion-reveal.is-visible.motion-fade-left {
+    animation-name: pestFadeInLeft;
+  }
+
+  .motion-reveal.is-visible.motion-fade-right {
+    animation-name: pestFadeInRight;
+  }
+
+  .motion-reveal.is-visible.motion-slide-down {
+    animation-name: pestSlideInDown;
+  }
+
+  .motion-reveal.is-visible.motion-zoom-in {
+    animation-name: pestZoomIn;
+  }
+
+  .pest-btn-sweep {
+    box-shadow: inset 0 0 0 0 hsl(var(--section-dark));
+    transition: color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+  }
+
+  .pest-btn-sweep:hover {
+    box-shadow: inset 260px 0 0 0 hsl(var(--section-dark));
+    color: hsl(var(--highlight-light));
+    transform: translateY(-2px);
+  }
+
+  .pest-nav-dropdown {
+    transform: rotateX(-75deg) translateX(-50%);
+    transform-origin: 50% 0%;
+  }
+
+  .group:hover .pest-nav-dropdown {
+    transform: rotateX(0deg) translateX(-50%);
+  }
+
+  .kalari-nav-shell {
+    border-radius: 10px;
+    isolation: isolate;
+    perspective: 1200px;
+  }
+
+  .kalari-nav-shell::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 251, 244, 0.95)),
+      linear-gradient(90deg, rgba(216, 242, 167, 0.18), transparent 20%, transparent 80%, rgba(216, 242, 167, 0.16));
+    z-index: -1;
+  }
+
+  .kalari-nav-shell::after {
+    content: "";
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: -13px;
+    height: 18px;
+    background: rgba(9, 29, 16, 0.18);
+    filter: blur(18px);
+    z-index: -2;
+  }
+
+  .kalari-nav-shell .kalari-logo-block {
+    position: relative;
+  }
+
+  .kalari-nav-shell .kalari-logo-block::after {
+    background: linear-gradient(180deg, transparent, rgba(28, 102, 53, 0.24), transparent);
+    bottom: 12px;
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 12px;
+    width: 1px;
+  }
+
+  .kalari-nav-accent {
+    background: linear-gradient(90deg, transparent, rgba(29, 102, 54, 0.22), rgba(216, 242, 167, 0.9), transparent);
+    height: 1px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    width: min(18vw, 220px);
+    z-index: -1;
+  }
+
+  .kalari-nav-accent-left {
+    left: -170px;
+    transform: rotate(-18deg);
+  }
+
+  .kalari-nav-accent-right {
+    right: -170px;
+    transform: rotate(18deg);
+  }
+
+  .kalari-nav-cta {
+    border: 1px solid rgba(216, 242, 167, 0.2);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    display: inline-flex;
+    overflow: hidden;
+    pointer-events: none;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+
+  .kalari-nav-cta {
+    pointer-events: auto;
+  }
+
+  .kalari-nav-cta:hover {
+    background: hsl(var(--highlight));
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .premium-nav-link {
+    position: relative;
+  }
+
+  .premium-nav-link::before {
+    content: "";
+    position: absolute;
+    inset: 12px 10px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(216, 242, 167, 0.2), rgba(216, 242, 167, 0.05));
+    opacity: 0;
+    transform: scaleY(0.75);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .premium-nav-link:hover::before,
+  .premium-nav-link[data-active="true"]::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .premium-nav-link::after {
+    background: linear-gradient(90deg, transparent, rgba(216, 242, 167, 0.78), transparent);
+    bottom: 15px;
+    content: "";
+    height: 1px;
+    left: 24%;
+    opacity: 0;
+    position: absolute;
+    right: 24%;
+    transform: scaleX(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: 2;
+  }
+
+  .premium-nav-link:hover::after,
+  .premium-nav-link[data-active="true"]::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .premium-nav-dropdown {
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    transform: translateX(-50%) translateY(12px) scale(0.96) rotateX(-10deg);
+    transform-origin: top center;
+    transition: opacity 0.28s ease, visibility 0.28s ease, transform 0.36s ease;
+    z-index: 140;
+  }
+
+  .group:hover .premium-nav-dropdown {
+    transform: translateX(-50%) translateY(0) scale(1) rotateX(0deg);
+  }
+
+  .pest-service-icon {
+    position: relative;
+  }
+
+  .pest-service-icon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-radius: inherit;
+    background: hsl(var(--highlight-light));
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+  }
+
+  .pest-service-card:hover .pest-service-icon::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pest-service-card .pest-service-icon svg {
+    position: relative;
+    z-index: 1;
+    transition: color 0.5s ease, transform 0.5s ease;
+  }
+
+  .pest-service-card:hover .pest-service-icon svg {
+    transform: rotate(360deg);
+  }
+
+  .kalari-service-card {
+    transform-style: preserve-3d;
+  }
+
+  .kalari-service-card:hover {
+    transform: translateY(-16px) rotateX(6deg) rotateY(-4deg);
+  }
+
+  .kalari-service-card:nth-child(2):hover {
+    transform: translateY(-18px) rotateX(7deg);
+  }
+
+  .kalari-service-card:nth-child(3):hover {
+    transform: translateY(-16px) rotateX(6deg) rotateY(4deg);
+  }
+
+  .pest-pricing-card {
+    transition: box-shadow 0.5s ease, transform 0.5s ease, border-color 0.5s ease;
+  }
+
+  .pest-pricing-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.55);
+  }
+
+  .pest-gallery-action {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(-360deg);
+    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+  }
+
+  .pest-gallery-tile:hover .pest-gallery-action {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+
+  .pest-testimonial-bubble {
+    position: relative;
+  }
+
+  .pest-testimonial-bubble::before {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 52px;
+    width: 46px;
+    height: 46px;
+    rotate: 45deg;
+    background: inherit;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: -1;
+  }
+
+  .pest-carousel-btn {
+    box-shadow: inset 0 0 0 0 hsl(var(--section-dark));
+    transition: color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease, transform 0.5s ease;
+  }
+
+  .pest-carousel-btn:hover {
+    box-shadow: inset 160px 0 0 0 hsl(var(--section-dark));
+    color: hsl(var(--highlight-light));
+    transform: translateY(-2px);
+  }
+
+  .pest-contact-card {
+    box-shadow: inset 0 0 0 0 hsl(var(--section-dark));
+    transition: box-shadow 0.7s ease, transform 0.5s ease, color 0.5s ease;
+  }
+
+  .pest-contact-card:hover {
+    box-shadow: inset 560px 0 0 0 hsl(var(--section-dark));
+    transform: translateY(-8px);
+  }
+
+  .pest-floating-button {
+    transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+  }
+
+  .pest-floating-button:hover {
+    transform: scale(1.1) rotate(6deg);
+    box-shadow: 0 18px 38px -18px rgba(0, 0, 0, 0.6);
+  }
+
+  .kalari-motion-canvas {
+    display: block;
+    height: 100%;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .kalari-hero-orbit {
+    opacity: 0.8;
+    mix-blend-mode: screen;
+  }
+
+  .kalari-grid-mask {
+    background-image:
+      linear-gradient(rgba(216, 242, 167, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(216, 242, 167, 0.08) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at 60% 42%, black, transparent 68%);
+  }
+
+  .kalari-telemetry-band {
+    align-items: center;
+    background: #07140b;
+    border-bottom: 1px solid rgba(216, 242, 167, 0.16);
+    border-top: 1px solid rgba(216, 242, 167, 0.16);
+    color: rgba(255, 255, 255, 0.76);
+    display: flex;
+    gap: 1.25rem;
+    overflow: hidden;
+    padding: 0.85rem 1rem;
+  }
+
+  .kalari-telemetry-window {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .kalari-telemetry-track {
+    animation: kalariTelemetry 34s linear infinite;
+    display: flex;
+    gap: 1.4rem;
+    width: max-content;
+  }
+
+  .kalari-telemetry-item {
+    align-items: center;
+    display: inline-flex;
+    font-size: 0.74rem;
+    font-weight: 700;
+    gap: 1.4rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .kalari-telemetry-item::after {
+    background: rgba(216, 242, 167, 0.68);
+    content: "";
+    display: inline-block;
+    height: 0.36rem;
+    width: 0.36rem;
+  }
+
+  .kalari-scroll-depth {
+    transform: translateY(32px) scale(0.98);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .kalari-scroll-depth.is-visible {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes kalariTelemetry {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@keyframes pestFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pestFadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 42px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pestFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-54px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pestFadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(54px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pestSlideInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pestZoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.65, 0.65, 0.65);
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal,
+  .motion-reveal.is-visible,
+  .pest-btn-sweep,
+  .pest-service-card *,
+  .pest-pricing-card,
+  .pest-gallery-action,
+  .pest-carousel-btn,
+  .pest-contact-card,
+  .pest-floating-button,
+  .kalari-telemetry-track {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

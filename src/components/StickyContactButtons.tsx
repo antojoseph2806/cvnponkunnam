@@ -25,7 +25,7 @@ const StickyContactButtons = () => {
       {/* Call Button */}
       <a
         href={CONTACT_TEL_HREF}
-        className="bg-[#1877F2] hover:bg-[#0d5dbf] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+        className="pest-floating-button bg-[#1877F2] hover:bg-[#0d5dbf] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
         aria-label="Call us"
       >
         <svg
@@ -47,7 +47,7 @@ const StickyContactButtons = () => {
         href="https://www.instagram.com/akmkalari"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-[#E4405F] hover:bg-[#d62952] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+        className="pest-floating-button bg-[#E4405F] hover:bg-[#d62952] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
         aria-label="Instagram"
       >
         <svg
@@ -65,7 +65,7 @@ const StickyContactButtons = () => {
         href={CONTACT_WHATSAPP_HREF}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-[#25D366] hover:bg-[#20ba5a] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+        className="pest-floating-button bg-[#25D366] hover:bg-[#20ba5a] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
         aria-label="WhatsApp"
       >
         <svg
@@ -82,7 +82,7 @@ const StickyContactButtons = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="bg-primary hover:bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2"
+          className="pest-floating-button bg-primary hover:bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg animate-in fade-in slide-in-from-bottom-2"
           aria-label="Scroll to top"
         >
           <ChevronUp className="w-6 h-6" />

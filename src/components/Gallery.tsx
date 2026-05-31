@@ -25,7 +25,7 @@ export default function Gallery({
     <>
       <section id="gallery" className="section-padding bg-background">
         <div className="container-narrow">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="motion-reveal motion-fade-up motion-delay-1 mx-auto max-w-3xl text-center">
             <p className="section-eyebrow">Gallery</p>
             <h2 className="section-title mt-3">Photo Gallery</h2>
           </div>
@@ -43,7 +43,7 @@ export default function Gallery({
                   key={image.slug}
                   onClick={() => setSelectedImageIndex(index)}
                   aria-label={`View image ${image.index}`}
-                  className="group relative aspect-square overflow-hidden rounded-lg bg-muted focus:outline-none focus:ring-2 focus:ring-highlight focus:ring-offset-2"
+                  className={`motion-reveal motion-zoom-in motion-delay-${(index % 6) + 1} pest-gallery-tile group relative aspect-square overflow-hidden rounded-lg bg-muted focus:outline-none focus:ring-2 focus:ring-highlight focus:ring-offset-2`}
                 >
                   <Image
                     src={image.src}
@@ -53,8 +53,8 @@ export default function Gallery({
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-primary shadow-lg">
+                  <div className="absolute inset-0">
+                    <span className="pest-gallery-action absolute left-1/2 top-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-primary shadow-lg">
                       <Expand className="h-5 w-5" />
                     </span>
                   </div>

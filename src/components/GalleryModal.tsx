@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import type { GalleryImage } from "@/lib/gallery";
@@ -18,13 +18,13 @@ export function GalleryModal({ images, initialIndex, onClose }: GalleryModalProp
 
   const minSwipeDistance = 50;
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
-  };
+  }, [images.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
-  };
+  }, [images.length]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
@@ -63,7 +63,7 @@ export function GalleryModal({ images, initialIndex, onClose }: GalleryModalProp
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [currentIndex]);
+  }, [goToNext, goToPrevious, onClose]);
 
   const currentImage = images[currentIndex];
 
