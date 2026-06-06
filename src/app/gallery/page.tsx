@@ -1,24 +1,21 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Gallery from "@/components/Gallery";
-import Footer from "@/components/Footer";
+import { HeritageSiteLayout, HeritagePageHero, HeritageGallery } from "@/components/heritage";
 import { getGalleryImages } from "@/lib/gallery";
 
 export const metadata: Metadata = {
-  title: "Gallery | CVN Kalari Kaduthuruthy",
+  title: "Gallery | AKM Sree Rudra Kalari Training & Heritage",
+  description: "Photo gallery of Kalaripayattu training, Marma therapy, wellness, and cultural heritage at AKM Sree Rudra.",
 };
 
 export default async function GalleryPage() {
   const images = await getGalleryImages();
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="pt-20">
-        <Gallery images={images} showViewAllLink={false} />
+    <HeritageSiteLayout>
+      <main>
+        <HeritagePageHero title="Gallery" subtitle="Tradition in motion" />
+        <HeritageGallery images={images} previewCount={images.length || 12} showViewAllLink={false} />
       </main>
-      <Footer />
-    </div>
+    </HeritageSiteLayout>
   );
 }
-

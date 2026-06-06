@@ -1,0 +1,14 @@
+export { HeritageNavigation } from "./HeritageNavigation";
+export { HeritageHero } from "./HeritageHero";
+export { HeritageAbout } from "./HeritageAbout";
+export { HeritageKalaripayattu } from "./HeritageKalaripayattu";
+export { HeritageMarma } from "./HeritageMarma";
+export { HeritageWellness } from "./HeritageWellness";
+export { HeritageGallery } from "./HeritageGallery";
+export { HeritageTestimonials } from "./HeritageTestimonials";
+export { HeritageContact } from "./HeritageContact";
+export { HeritageFooter } from "./HeritageFooter";
+export { HeritagePageHero } from "./HeritagePageHero";
+export { HeritageSiteLayout } from "./HeritageSiteLayout";
+export { HeritageCtaBanner } from "./HeritageCtaBanner";
+export { SectionHeader } from "./SectionHeader";

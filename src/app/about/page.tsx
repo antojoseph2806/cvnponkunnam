@@ -1,37 +1,40 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import About from "@/components/About";
-import Footer from "@/components/Footer";
+import { HeritageSiteLayout } from "@/components/heritage";
+import { HeritageAbout } from "@/components/heritage/HeritageAbout";
+import { HeritagePageHero } from "@/components/heritage/HeritagePageHero";
+import { HeritageCtaBanner } from "@/components/heritage";
+import { HERITAGE } from "@/lib/heritage-content";
 
 export const metadata: Metadata = {
-  title: "About Us | AKM Sree Rudra CVN Kalari | Traditional Kalaripayattu & Healing Center",
-  description:
-    "Learn about AKM Sree Rudra CVN Kalari, a premier center for authentic Kalaripayattu training and traditional healing in Kerala. Guided by experienced Gurukkals in the CVN tradition, we preserve ancient martial arts and healing wisdom for modern practitioners.",
-  keywords:
-    "about CVN Kalari, Kalari Gurukkal, CVN tradition, Kalaripayattu history, traditional martial arts Kerala, Kalari lineage, authentic Kalaripayattu center, Kerala martial arts heritage",
-  openGraph: {
-    title: "About Us | AKM Sree Rudra CVN Kalari",
-    description: "Discover our tradition of authentic Kalaripayattu training and healing in Kerala.",
-    images: [
-      {
-        url: "/assets/about.png",
-        width: 1200,
-        height: 630,
-        alt: "About AKM Sree Rudra CVN Kalari",
-      },
-    ],
-  },
+  title: "About AKM Sree Rudra | Living Heritage Institution Kerala",
+  description: `Learn about ${HERITAGE.brand}, founded in ${HERITAGE.founded} in ${HERITAGE.location}. ${HERITAGE.recognition}.`,
 };
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="pt-20">
-        <About variant="full" />
+    <HeritageSiteLayout>
+      <main>
+        <HeritagePageHero
+          title="About AKM Sree Rudra"
+          subtitle="A sanctuary where ancient wisdom meets modern practice"
+          image="/assets/about.png"
+        />
+        <HeritageAbout />
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-bronze leading-relaxed">
+            <p>
+              AKM Sree Rudra is not merely a martial arts academy. It is a living heritage institution dedicated to
+              preserving and promoting Kerala&apos;s ancient traditions of Kalaripayattu, Marma Chikilsa, Kalari Healing,
+              Ayurvedic Wellness, Yoga, and Holistic Rejuvenation.
+            </p>
+            <p>
+              Under {HERITAGE.founder}, we carry the {HERITAGE.heritage}, welcoming international students, martial
+              artists, wellness travelers, researchers, and organizations seeking authentic transformation.
+            </p>
+          </div>
+        </section>
+        <HeritageCtaBanner />
       </main>
-      <Footer />
-    </div>
+    </HeritageSiteLayout>
   );
 }
-

@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Link from "next/link";
+import { HeritageSiteLayout, HeritagePageHero } from "@/components/heritage";
+import { HeritageImage } from "@/components/heritage/HeritageImage";
 
 export const metadata: Metadata = {
-  title: "Blog | Kalaripayattu Training Tips & Traditional Healing Insights | CVN Kalari",
+  title: "Blog | Kalaripayattu & Traditional Healing Insights",
   description:
-    "Read expert articles about Kalaripayattu training, Marma Chikitsa, traditional healing, and wellness from AKM Sree Rudra CVN Kalari. Learn about Kerala's ancient martial arts and healing traditions.",
-  keywords:
-    "Kalaripayattu blog, martial arts tips, Marma Chikitsa articles, traditional healing Kerala, Kalari training guide, wellness blog Kerala",
+    "Articles about Kalaripayattu training, Marma Chikilsa, traditional healing, and wellness from AKM Sree Rudra.",
 };
 
-// Sample blog posts - you can move this to a database later
 const blogPosts = [
   {
     slug: "benefits-of-kalaripayattu-training",
@@ -44,67 +41,45 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#f6f4ec]">
-      <Header />
-      <main className="pt-20">
-        <section className="px-4 py-16 md:px-8 lg:px-16 lg:py-24">
-          <div className="container-narrow">
-            <div className="text-center">
-              <p className="section-eyebrow">Knowledge & Insights</p>
-              <h1 className="mt-3 font-heading text-4xl leading-tight text-foreground md:text-6xl">
-                Kalari Blog
-              </h1>
-              <p className="mx-auto mt-5 max-w-2xl section-copy">
-                Explore articles about Kalaripayattu training, traditional healing, and wellness wisdom from Kerala.
-              </p>
-            </div>
-
-            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <HeritageSiteLayout>
+      <main>
+        <HeritagePageHero title="Blog" subtitle="Knowledge from the Kalari tradition" />
+        <section className="py-20 bg-heritage-cream">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="bg-white shadow-[0_24px_60px_-46px_rgba(18,41,25,0.48)] transition-all hover:shadow-[0_32px_80px_-46px_rgba(18,41,25,0.62)]"
+                  className="bg-white rounded-lg overflow-hidden shadow-lg border border-heritage-green/10 hover:shadow-xl transition-shadow"
                 >
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="h-full w-full object-cover transition-transform hover:scale-105"
-                    />
+                  <div className="relative aspect-video">
+                    <HeritageImage src={post.image} alt={post.title} fill className="object-cover" />
                   </div>
                   <div className="p-6">
-                    <div className="flex items-center gap-3 text-xs">
-                      <span className="font-semibold uppercase tracking-[0.14em] text-highlight">
+                    <div className="flex items-center gap-3 text-xs mb-3">
+                      <span className="font-semibold uppercase tracking-wider text-temple-gold-dark">
                         {post.category}
                       </span>
-                      <span className="text-muted-foreground">{post.date}</span>
+                      <span className="text-bronze">{post.date}</span>
                     </div>
-                    <h2 className="mt-3 font-heading text-xl leading-tight text-foreground">
-                      {post.title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                      {post.excerpt}
-                    </p>
+                    <h2 className="font-display text-xl text-heritage-green leading-tight">{post.title}</h2>
+                    <p className="mt-3 text-sm text-bronze leading-relaxed">{post.excerpt}</p>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="mt-4 inline-flex text-sm font-semibold text-highlight hover:underline"
+                      className="mt-4 inline-flex text-sm font-semibold text-heritage-green hover:text-temple-gold-dark"
                     >
-                      Read More →
+                      Read More
                     </Link>
                   </div>
                 </article>
               ))}
             </div>
-
-            <div className="mt-12 text-center">
-              <p className="text-sm text-muted-foreground">
-                More articles coming soon. Follow us on social media for updates.
-              </p>
-            </div>
+            <p className="text-center text-bronze text-sm mt-12">
+              Connect Sanity CMS to publish new articles dynamically. See .env.example
+            </p>
           </div>
         </section>
       </main>
-      <Footer />
-    </div>
+    </HeritageSiteLayout>
   );
 }
