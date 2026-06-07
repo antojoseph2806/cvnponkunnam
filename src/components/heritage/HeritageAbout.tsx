@@ -49,10 +49,10 @@ export function HeritageAbout() {
             <h3 className="font-display text-heritage-green text-2xl md:text-3xl font-semibold">
               {about.founderTitle}
             </h3>
-            <p className="text-bronze leading-relaxed">
+            <p className="text-bronze-dark leading-relaxed font-medium">
               {about.founderText}
             </p>
-            <p className="text-bronze leading-relaxed">
+            <p className="text-bronze-dark leading-relaxed font-medium">
               {about.locationText}
             </p>
 
@@ -88,7 +88,7 @@ export function HeritageAbout() {
                   <Icon className="w-8 h-8 text-heritage-green-dark" aria-hidden />
                 </div>
                 <div className="font-display text-heritage-green text-4xl font-bold mb-2">{stat.value}</div>
-                <div className="text-bronze font-medium">{stat.label}</div>
+                <div className="text-bronze-dark font-semibold">{stat.label}</div>
               </motion.div>
             );
           })}

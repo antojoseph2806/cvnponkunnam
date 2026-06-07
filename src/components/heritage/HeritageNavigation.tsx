@@ -48,10 +48,10 @@ export function HeritageNavigation() {
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex-shrink-0" aria-label="AKM Sree Rudra home">
             <Image
-              src="/assets/logo.png"
+              src="/assets/logo-new.png"
               alt="AKM Sree Rudra Logo"
-              width={180}
-              height={64}
+              width={70}
+              height={70}
               className="h-14 w-auto object-contain md:h-16"
               priority
             />

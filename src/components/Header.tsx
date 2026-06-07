@@ -94,9 +94,9 @@ const Header = () => {
         <span className="kalari-nav-accent kalari-nav-accent-right" aria-hidden="true" />
         <Link href="/" className="kalari-logo-block flex h-full items-center border-r border-primary/10 pr-5">
           <img
-            src="/assets/logo-wide.png"
+            src="/assets/logo-new.png"
             alt="A.K.M Sree Rudra"
-            className="h-11 w-auto max-w-[190px] object-contain md:h-12 md:max-w-[245px]"
+            className="h-12 w-auto max-w-[60px] object-contain md:h-14 md:max-w-[70px]"
           />
         </Link>
 

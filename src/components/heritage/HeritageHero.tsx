@@ -18,7 +18,7 @@ export function HeritageHero() {
           alt="Traditional Kalaripayattu training at AKM Sree Rudra"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-heritage-green-dark/90 via-heritage-green/80 to-heritage-green-dark/95"
+          className="absolute inset-0 bg-gradient-to-b from-heritage-green-dark/95 via-heritage-green-dark/90 to-heritage-green-dark/98"
           aria-hidden
         />
       </div>
@@ -30,27 +30,28 @@ export function HeritageHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
+          className="py-10 px-6 sm:px-10 rounded-2xl bg-black/35 backdrop-blur-sm border border-white/10 shadow-2xl"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-black/40 border border-temple-gold/60 rounded-full mb-6 backdrop-blur-sm shadow-lg">
-            <span className="w-2 h-2 bg-temple-gold rounded-full animate-pulse" aria-hidden />
-            <span className="text-temple-gold-light text-sm tracking-wide font-medium drop-shadow-md">{hero.badgeText}</span>
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-black/60 border border-temple-gold/70 rounded-full mb-6 backdrop-blur-md shadow-xl">
+            <span className="w-2.5 h-2.5 bg-temple-gold rounded-full animate-pulse" aria-hidden />
+            <span className="text-temple-gold-light text-sm tracking-wide font-bold drop-shadow-lg">{hero.badgeText}</span>
           </div>
 
-          <h1 className="mb-6 text-heritage-cream font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.1] tracking-wide drop-shadow-lg text-shadow-lg">
+          <h1 className="mb-6 text-heritage-cream font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.1] tracking-wide drop-shadow-xl text-shadow-lg">
             {hero.title}
           </h1>
 
-          <p className="text-temple-gold-light mb-4 max-w-3xl mx-auto font-accent text-[clamp(1.25rem,3vw,2rem)] italic leading-snug drop-shadow-lg text-shadow-lg">
+          <p className="text-temple-gold-light mb-5 max-w-3xl mx-auto font-display text-[clamp(1.25rem,3vw,2rem)] leading-snug drop-shadow-xl text-shadow-lg font-semibold">
             {hero.tagline}
           </p>
 
-          <p className="text-heritage-cream/95 mb-12 max-w-2xl mx-auto text-lg drop-shadow-lg font-medium text-shadow">
+          <p className="text-white mb-12 max-w-2xl mx-auto text-lg drop-shadow-xl font-bold text-shadow-lg leading-relaxed">
             {hero.subtitle}
           </p>
 
           <div className="mb-12">
-            <div className="inline-block px-6 py-2 border-2 border-temple-gold rounded-md bg-black/30 backdrop-blur-sm">
-              <span className="text-temple-gold-light font-display text-lg tracking-[0.15em] drop-shadow-md">
+            <div className="inline-block px-7 py-2.5 border-2 border-temple-gold rounded-md bg-black/50 backdrop-blur-md shadow-lg">
+              <span className="text-temple-gold-light font-display text-lg tracking-[0.15em] drop-shadow-lg font-bold">
                 SINCE {hero.sinceYear}
               </span>
             </div>
@@ -59,14 +60,14 @@ export function HeritageHero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href={hero.primaryButtonLink}
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-temple-gold text-heritage-green-dark hover:bg-temple-gold-light transition-all rounded-md shadow-lg hover:shadow-xl hover:scale-[1.02] font-display text-lg"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-temple-gold text-heritage-green-dark hover:bg-temple-gold-light transition-all rounded-md shadow-xl hover:shadow-2xl hover:scale-[1.02] font-display text-lg font-bold"
             >
               {hero.primaryButtonText}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden />
             </Link>
             <Link
               href={hero.secondaryButtonLink}
-              className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-temple-gold text-temple-gold hover:bg-temple-gold/10 transition-all rounded-md backdrop-blur-sm font-display text-lg"
+              className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-temple-gold text-temple-gold hover:bg-temple-gold/20 transition-all rounded-md backdrop-blur-md font-display text-lg font-bold bg-black/30"
             >
               {hero.secondaryButtonText}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden />

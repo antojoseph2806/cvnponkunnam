@@ -15,11 +15,11 @@ export function HeritageFooter() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-1">
             <Image
-              src="/assets/logo.png"
+              src="/assets/logo-new.png"
               alt="AKM Sree Rudra"
-              width={160}
-              height={56}
-              className="h-14 w-auto mb-6"
+              width={70}
+              height={70}
+              className="h-16 w-auto mb-6"
             />
             <p className="text-heritage-cream/70 text-sm leading-relaxed mb-4">
               {footer.description}

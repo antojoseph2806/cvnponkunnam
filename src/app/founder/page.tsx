@@ -15,12 +15,12 @@ export default function FounderPage() {
         <HeritagePageHero
           title="Founder & Chief Gurukkal"
           subtitle={HERITAGE.founder}
-          image="/assets/about.png"
+          image="/assets/founder-puja.png"
         />
         <section className="py-20 bg-heritage-cream">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
-              <HeritageImage src="/assets/about.png" alt={HERITAGE.founder} fill className="object-cover" />
+              <HeritageImage src="/assets/founder-puja.png" alt={HERITAGE.founder} fill className="object-cover" />
             </div>
             <div className="space-y-6 text-bronze leading-relaxed">
               <h2 className="font-display text-heritage-green text-3xl font-semibold">{HERITAGE.founder}</h2>

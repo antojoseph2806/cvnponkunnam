@@ -15,7 +15,7 @@ export function OrganizationSchema() {
     description:
       "Authentic Kalaripayattu training center and traditional Marma Chikitsa healing center in Kerala, India. Learn from experienced Gurukkals in the CVN tradition.",
     url: "https://akmsreerudra.com",
-    logo: "https://akmsreerudra.com/assets/logo-wide.png",
+    logo: "https://akmsreerudra.com/assets/logo-new.png",
     image: "https://akmsreerudra.com/assets/kalari-training-hero.png",
     telephone: "+91-XXXXXXXXXX", // Add actual phone number
     email: "info@akmsreerudra.com", // Add actual email

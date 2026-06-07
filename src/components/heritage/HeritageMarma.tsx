@@ -48,7 +48,7 @@ export function HeritageMarma() {
                   className="flex items-start gap-3 p-4 bg-white rounded-lg border border-heritage-green/10 shadow-sm"
                 >
                   <HeartPulse className="w-5 h-5 text-temple-gold shrink-0 mt-0.5" aria-hidden />
-                  <span className="text-bronze text-sm font-medium">{service}</span>
+                  <span className="text-bronze-dark text-sm font-semibold">{service}</span>
                 </li>
               ))}
             </ul>

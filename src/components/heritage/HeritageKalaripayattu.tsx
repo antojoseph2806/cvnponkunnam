@@ -33,8 +33,8 @@ export function HeritageKalaripayattu() {
               className="group p-6 rounded-lg border border-temple-gold/20 bg-heritage-green-dark/50 hover:border-temple-gold/50 hover:bg-heritage-green-dark transition-all"
             >
               <Swords className="w-8 h-8 text-temple-gold mb-4 group-hover:scale-110 transition-transform" aria-hidden />
-              <h3 className="font-display text-xl text-temple-gold-light mb-3">{program.title}</h3>
-              <p className="text-heritage-cream/75 text-sm leading-relaxed">{program.description}</p>
+              <h3 className="font-display text-xl text-temple-gold-light mb-3 font-bold drop-shadow-md">{program.title}</h3>
+              <p className="text-heritage-cream/90 text-sm leading-relaxed font-medium">{program.description}</p>
             </motion.article>
           ))}
         </div>

@@ -100,8 +100,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/logo.png" />
-        <link rel="apple-touch-icon" href="/assets/logo.png" />
+        <link rel="icon" href="/assets/logo-new.png" />
+        <link rel="apple-touch-icon" href="/assets/logo-new.png" />
         <link rel="canonical" href={siteUrl} />
         <meta name="geo.region" content="IN-KL" />
         <meta name="geo.placename" content="Kottayam, Kerala" />

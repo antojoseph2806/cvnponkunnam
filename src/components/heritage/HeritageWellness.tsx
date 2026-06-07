@@ -37,8 +37,8 @@ export function HeritageWellness() {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-temple-gold/20 mb-6">
                   <Icon className="w-7 h-7 text-temple-gold" aria-hidden />
                 </div>
-                <h3 className="font-display text-xl text-temple-gold-light mb-4">{pkg.title}</h3>
-                <p className="text-heritage-cream/75 text-sm leading-relaxed">{pkg.description}</p>
+                <h3 className="font-display text-xl text-temple-gold-light mb-4 font-bold drop-shadow-md">{pkg.title}</h3>
+                <p className="text-heritage-cream/90 text-sm leading-relaxed font-medium">{pkg.description}</p>
               </motion.div>
             );
           })}

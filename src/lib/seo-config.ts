@@ -98,9 +98,9 @@ export const SEO_CONFIG = {
 
   // Images for SEO
   images: {
-    logo: "/assets/logo-wide.png",
+    logo: "/assets/logo-new.png",
     ogImage: "/assets/kalari-training-hero.png",
-    favicon: "/assets/logo.png",
+    favicon: "/assets/logo-new.png",
   },
 
   // Services offered
