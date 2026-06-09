@@ -28,10 +28,10 @@ export function HeritageCtaBanner() {
             <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
-            href="/international-students"
+            href="/kalaripayattu"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-temple-gold text-temple-gold rounded-md font-display hover:bg-temple-gold/10 transition-colors"
           >
-            International Programs
+            Explore Programs
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

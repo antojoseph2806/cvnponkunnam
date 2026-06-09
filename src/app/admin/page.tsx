@@ -1,16 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
-  LayoutDashboard,
+  ImageIcon,
   Image,
-  Info,
-  Sword,
-  Heart,
-  Sparkles,
   BookOpen,
-  Phone,
   Save,
   RotateCcw,
   Download,
@@ -18,32 +13,29 @@ import {
   LogOut,
   ChevronRight,
   Globe,
-  PanelBottom,
+  Plus,
+  Trash2,
+  Loader2,
+  Film,
+  X,
 } from "lucide-react";
 import { useSiteContent, exportContent, importContent } from "@/lib/content-store";
 import { logout } from "@/lib/admin-auth";
 import { AdminField } from "@/components/admin/AdminField";
 import { SectionCard } from "@/components/admin/SectionCard";
-import type { CourseItem, StatItem, ProgramItem, WellnessPackage, SiteContent } from "@/lib/admin-types";
+import type { CourseItem, SiteContent } from "@/lib/admin-types";
 
 const tabs = [
-  { id: "hero", label: "Hero Section", icon: Image },
-  { id: "about", label: "About", icon: Info },
-  { id: "kalaripayattu", label: "Kalaripayattu", icon: Sword },
-  { id: "marma", label: "Marma Chikitsa", icon: Heart },
-  { id: "wellness", label: "Wellness", icon: Sparkles },
-  { id: "courses", label: "Courses", icon: BookOpen },
-  { id: "contact", label: "Contact", icon: Phone },
-  { id: "footer", label: "Footer", icon: PanelBottom },
+  { id: "media", label: "Photos & Videos", icon: ImageIcon },
+  { id: "hero", label: "Hero Background", icon: Image },
+  { id: "courses", label: "Courses & Services", icon: BookOpen },
 ];
 
 export default function AdminDashboardPage() {
   const router = useRouter();
   const { content, updateContent, reset } = useSiteContent();
-  const [activeTab, setActiveTab] = useState("hero");
+  const [activeTab, setActiveTab] = useState("media");
   const [saved, setSaved] = useState(false);
-  const [importText, setImportText] = useState("");
-  const [importError, setImportError] = useState("");
 
   const handleSave = () => {
     setSaved(true);
@@ -66,18 +58,6 @@ export default function AdminDashboardPage() {
     a.download = "akm-site-content.json";
     a.click();
     URL.revokeObjectURL(url);
-  };
-
-  const handleImport = () => {
-    setImportError("");
-    if (!importText.trim()) return;
-    if (importContent(importText)) {
-      setImportText("");
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2000);
-    } else {
-      setImportError("Invalid JSON. Please check your file and try again.");
-    }
   };
 
   const handleLogout = () => {
@@ -123,6 +103,13 @@ export default function AdminDashboardPage() {
             View Website
           </a>
           <button
+            onClick={handleExport}
+            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-heritage-cream/70 hover:text-heritage-cream transition-colors"
+          >
+            <Download className="w-4 h-4" />
+            Export Backup
+          </button>
+          <button
             onClick={handleLogout}
             className="w-full flex items-center gap-2 px-4 py-2 text-sm text-heritage-cream/70 hover:text-red-400 transition-colors"
           >
@@ -143,7 +130,7 @@ export default function AdminDashboardPage() {
           </div>
           <div className="flex items-center gap-2">
             {saved && (
-              <span className="text-sm text-green-600 bg-green-50 px-3 py-1 rounded-md">Saved successfully!</span>
+              <span className="text-sm text-green-600 bg-green-50 px-3 py-1 rounded-md">Saved!</span>
             )}
             <button
               onClick={handleSave}
@@ -164,51 +151,22 @@ export default function AdminDashboardPage() {
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-6">
-          <div className="max-w-4xl mx-auto space-y-6">
-            {activeTab === "hero" && <HeroEditor content={content.hero} onChange={(hero) => updateContent((prev) => ({ ...prev, hero }))} />}
-            {activeTab === "about" && <AboutEditor content={content.about} onChange={(about) => updateContent((prev) => ({ ...prev, about }))} />}
-            {activeTab === "kalaripayattu" && <KalaripayattuEditor content={content.kalaripayattu} onChange={(k) => updateContent((prev) => ({ ...prev, kalaripayattu: k }))} />}
-            {activeTab === "marma" && <MarmaEditor content={content.marma} onChange={(m) => updateContent((prev) => ({ ...prev, marma: m }))} />}
-            {activeTab === "wellness" && <WellnessEditor content={content.wellness} onChange={(w) => updateContent((prev) => ({ ...prev, wellness: w }))} />}
-            {activeTab === "courses" && <CoursesEditor courses={content.courses} onChange={(courses) => updateContent((prev) => ({ ...prev, courses }))} />}
-            {activeTab === "contact" && <ContactEditor content={content.contact} onChange={(contact) => updateContent((prev) => ({ ...prev, contact }))} />}
-            {activeTab === "footer" && <FooterEditor content={content.footer} onChange={(footer) => updateContent((prev) => ({ ...prev, footer }))} />}
-
-            {/* Import / Export */}
-            <SectionCard title="Import / Export Content">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-sm font-medium text-heritage-green mb-3">Export All Content</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Download your site content as a JSON file for backup.</p>
-                  <button
-                    onClick={handleExport}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-heritage-green text-heritage-cream text-sm rounded-md hover:bg-heritage-green-dark transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    Export JSON
-                  </button>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium text-heritage-green mb-3">Import Content</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Paste a previously exported JSON file to restore content.</p>
-                  {importError && <p className="text-xs text-red-600 mb-2">{importError}</p>}
-                  <textarea
-                    value={importText}
-                    onChange={(e) => setImportText(e.target.value)}
-                    placeholder="Paste JSON content here..."
-                    rows={3}
-                    className="w-full px-3 py-2 border border-border rounded-md bg-white text-foreground text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-temple-gold/50"
-                  />
-                  <button
-                    onClick={handleImport}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-temple-gold text-heritage-green-dark text-sm rounded-md hover:bg-temple-gold-light transition-colors"
-                  >
-                    <Upload className="w-4 h-4" />
-                    Import JSON
-                  </button>
-                </div>
-              </div>
-            </SectionCard>
+          <div className="max-w-5xl mx-auto space-y-6">
+            {activeTab === "media" && <MediaManager />}
+            {activeTab === "hero" && (
+              <HeroBackgroundEditor
+                content={content.hero}
+                onChange={(hero) => updateContent((prev) => ({ ...prev, hero }))}
+              />
+            )}
+            {activeTab === "courses" && (
+              <CoursesAndServicesManager
+                courses={content.courses}
+                marmaServices={content.marma.services}
+                onCoursesChange={(courses) => updateContent((prev) => ({ ...prev, courses }))}
+                onMarmaChange={(services) => updateContent((prev) => ({ ...prev, marma: { ...prev.marma, services } }))}
+              />
+            )}
           </div>
         </div>
       </main>
@@ -216,274 +174,616 @@ export default function AdminDashboardPage() {
   );
 }
 
-/* Hero Editor */
-function HeroEditor({ content, onChange }: { content: SiteContent["hero"]; onChange: (v: SiteContent["hero"]) => void }) {
+/* =========================
+   FILE UPLOAD HELPER
+   ========================= */
+function FileUploader({
+  category,
+  accept,
+  label,
+  onUploaded,
+}: {
+  category: string;
+  accept: string;
+  label: string;
+  onUploaded: (path: string) => void;
+}) {
+  const [uploading, setUploading] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("category", category);
+
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (data.success) {
+        onUploaded(data.path);
+      } else {
+        alert(data.error || "Upload failed");
+      }
+    } catch {
+      alert("Upload failed. Please try again.");
+    } finally {
+      setUploading(false);
+      if (inputRef.current) inputRef.current.value = "";
+    }
+  };
+
   return (
-    <SectionCard title="Hero Section">
-      <AdminField label="Background Image Path" value={content.backgroundImage} onChange={(v) => onChange({ ...content, backgroundImage: v })} placeholder="/assets/kalari-training-hero.png" />
-      <AdminField label="Badge Text" value={content.badgeText} onChange={(v) => onChange({ ...content, badgeText: v })} />
-      <AdminField label="Title" value={content.title} onChange={(v) => onChange({ ...content, title: v })} />
-      <AdminField label="Tagline" value={content.tagline} onChange={(v) => onChange({ ...content, tagline: v })} />
-      <AdminField label="Subtitle" value={content.subtitle} onChange={(v) => onChange({ ...content, subtitle: v })} />
-      <div className="grid grid-cols-2 gap-4">
-        <AdminField label="Since Year" value={String(content.sinceYear)} onChange={(v) => onChange({ ...content, sinceYear: Number(v) || 1996 })} type="number" />
-        <AdminField label="Primary Button Text" value={content.primaryButtonText} onChange={(v) => onChange({ ...content, primaryButtonText: v })} />
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <AdminField label="Primary Button Link" value={content.primaryButtonLink} onChange={(v) => onChange({ ...content, primaryButtonLink: v })} />
-        <AdminField label="Secondary Button Text" value={content.secondaryButtonText} onChange={(v) => onChange({ ...content, secondaryButtonText: v })} />
-      </div>
-      <AdminField label="Secondary Button Link" value={content.secondaryButtonLink} onChange={(v) => onChange({ ...content, secondaryButtonLink: v })} />
-      <div className="mt-4 p-4 bg-muted/30 rounded-md">
-        <p className="text-xs text-muted-foreground font-medium mb-2">Preview:</p>
-        <div className="text-sm text-heritage-green">{content.title}</div>
-        <div className="text-xs text-muted-foreground italic">{content.tagline}</div>
-      </div>
-    </SectionCard>
+    <div>
+      <input
+        ref={inputRef}
+        type="file"
+        accept={accept}
+        onChange={handleFileChange}
+        className="hidden"
+        id={`upload-${category}`}
+      />
+      <label
+        htmlFor={`upload-${category}`}
+        className="inline-flex items-center gap-2 px-4 py-2.5 bg-temple-gold text-heritage-green-dark text-sm font-semibold rounded-md hover:bg-temple-gold-light transition-colors cursor-pointer"
+      >
+        {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+        {label}
+      </label>
+    </div>
   );
 }
 
-/* About Editor */
-function AboutEditor({ content, onChange }: { content: SiteContent["about"]; onChange: (v: SiteContent["about"]) => void }) {
-  return (
-    <SectionCard title="About Section">
-      <AdminField label="Eyebrow Label" value={content.eyebrow} onChange={(v) => onChange({ ...content, eyebrow: v })} />
-      <AdminField label="Title" value={content.title} onChange={(v) => onChange({ ...content, title: v })} />
-      <AdminField label="Description" value={content.description} onChange={(v) => onChange({ ...content, description: v })} type="textarea" />
-      <AdminField label="Image URL" value={content.image} onChange={(v) => onChange({ ...content, image: v })} />
-      <AdminField label="Founder Title" value={content.founderTitle} onChange={(v) => onChange({ ...content, founderTitle: v })} />
-      <AdminField label="Founder Name" value={content.founderName} onChange={(v) => onChange({ ...content, founderName: v })} />
-      <AdminField label="Founder Text" value={content.founderText} onChange={(v) => onChange({ ...content, founderText: v })} type="textarea" />
-      <AdminField label="Location Text" value={content.locationText} onChange={(v) => onChange({ ...content, locationText: v })} type="textarea" />
-      <AdminField label="Mission Quote" value={content.missionQuote} onChange={(v) => onChange({ ...content, missionQuote: v })} type="textarea" />
-      <AdminField label="Mission Label" value={content.missionLabel} onChange={(v) => onChange({ ...content, missionLabel: v })} />
-      <AdminField label="Founder Link Text" value={content.founderLinkText} onChange={(v) => onChange({ ...content, founderLinkText: v })} />
-      <AdminField label="Founder Link Href" value={content.founderLinkHref} onChange={(v) => onChange({ ...content, founderLinkHref: v })} />
+/* =========================
+   MEDIA MANAGER
+   ========================= */
+type MediaFile = {
+  filename: string;
+  path: string;
+  isVideo: boolean;
+  isImage: boolean;
+};
 
-      <div className="border-t border-border pt-4">
-        <h4 className="text-sm font-medium text-heritage-green mb-3">Statistics</h4>
+function MediaManager() {
+  const [photos, setPhotos] = useState<MediaFile[]>([]);
+  const [videos, setVideos] = useState<MediaFile[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [previewFile, setPreviewFile] = useState<MediaFile | null>(null);
+
+  const fetchFiles = useCallback(async () => {
+    try {
+      const [photosRes, videosRes] = await Promise.all([
+        fetch("/api/upload?category=gallery-photos"),
+        fetch("/api/upload?category=gallery-videos"),
+      ]);
+      const photosData = await photosRes.json();
+      const videosData = await videosRes.json();
+      setPhotos(photosData.files || []);
+      setVideos(videosData.files || []);
+    } catch {
+      // ignore
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchFiles();
+  }, [fetchFiles]);
+
+  const handleDelete = async (category: string, filename: string, type: "photo" | "video") => {
+    if (!window.confirm(`Delete ${filename}?`)) return;
+    try {
+      await fetch(`/api/upload?category=${category}&filename=${filename}`, { method: "DELETE" });
+      if (type === "photo") setPhotos((prev) => prev.filter((f) => f.filename !== filename));
+      else setVideos((prev) => prev.filter((f) => f.filename !== filename));
+    } catch {
+      alert("Delete failed");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <Loader2 className="w-8 h-8 animate-spin text-temple-gold" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-8">
+      {/* Photos Section */}
+      <SectionCard title="Gallery Photos">
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-sm text-muted-foreground">{photos.length} photos in gallery</p>
+          <FileUploader
+            category="gallery-photos"
+            accept="image/*"
+            label="Upload Photo"
+            onUploaded={() => fetchFiles()}
+          />
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          {photos.map((file) => (
+            <div key={file.filename} className="group relative aspect-square rounded-lg overflow-hidden border border-border bg-muted/30">
+              <img
+                src={file.path}
+                alt={file.filename}
+                className="w-full h-full object-cover cursor-pointer"
+                onClick={() => setPreviewFile(file)}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                <button
+                  onClick={() => handleDelete("gallery-photos", file.filename, "photo")}
+                  className="opacity-0 group-hover:opacity-100 p-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition-all"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+              <p className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-[10px] px-2 py-1 truncate">{file.filename}</p>
+            </div>
+          ))}
+          {photos.length === 0 && (
+            <p className="text-sm text-muted-foreground col-span-full text-center py-8">
+              No photos yet. Upload your first gallery photo.
+            </p>
+          )}
+        </div>
+      </SectionCard>
+
+      {/* Videos Section */}
+      <SectionCard title="Gallery Videos">
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-sm text-muted-foreground">{videos.length} videos in gallery</p>
+          <FileUploader
+            category="gallery-videos"
+            accept="video/*"
+            label="Upload Video"
+            onUploaded={() => fetchFiles()}
+          />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {videos.map((file) => (
+            <div key={file.filename} className="group relative aspect-video rounded-lg overflow-hidden border border-border bg-heritage-green-dark">
+              <video
+                src={file.path}
+                controls
+                preload="metadata"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  onClick={() => handleDelete("gallery-videos", file.filename, "video")}
+                  className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition-all"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+              <p className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-[10px] px-2 py-1 truncate">{file.filename}</p>
+            </div>
+          ))}
+          {videos.length === 0 && (
+            <p className="text-sm text-muted-foreground col-span-full text-center py-8">
+              No videos yet. Upload your first gallery video.
+            </p>
+          )}
+        </div>
+      </SectionCard>
+
+      {/* Preview Modal */}
+      {previewFile && (
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setPreviewFile(null)}>
+          <div className="relative max-w-4xl max-h-[90vh] w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setPreviewFile(null)}
+              className="absolute -top-10 right-0 text-white hover:text-temple-gold transition-colors"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            {previewFile.isImage && (
+              <img src={previewFile.path} alt={previewFile.filename} className="w-full h-full object-contain rounded-lg" />
+            )}
+            {previewFile.isVideo && (
+              <video src={previewFile.path} controls autoPlay className="w-full h-full rounded-lg" />
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* =========================
+   HERO BACKGROUND EDITOR
+   ========================= */
+function HeroBackgroundEditor({
+  content,
+  onChange,
+}: {
+  content: SiteContent["hero"];
+  onChange: (v: SiteContent["hero"]) => void;
+}) {
+  const [heroFiles, setHeroFiles] = useState<MediaFile[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchHeroFiles = useCallback(async () => {
+    try {
+      const res = await fetch("/api/upload?category=hero-background");
+      const data = await res.json();
+      setHeroFiles(data.files || []);
+    } catch {
+      // ignore
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchHeroFiles();
+  }, [fetchHeroFiles]);
+
+  const handleDeleteHeroFile = async (filename: string) => {
+    if (!window.confirm(`Delete ${filename}?`)) return;
+    try {
+      await fetch(`/api/upload?category=hero-background&filename=${filename}`, { method: "DELETE" });
+      setHeroFiles((prev) => prev.filter((f) => f.filename !== filename));
+      // Clear selection if deleted file was active
+      if (content.backgroundImage.includes(filename)) onChange({ ...content, backgroundImage: "" });
+      if (content.backgroundVideo.includes(filename)) onChange({ ...content, backgroundVideo: "" });
+    } catch {
+      alert("Delete failed");
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Current Background Preview */}
+      <SectionCard title="Current Hero Background">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="text-sm font-medium text-heritage-green mb-2">Background Image</h4>
+            <div className="aspect-video rounded-lg overflow-hidden border border-border bg-muted/30">
+              {content.backgroundImage ? (
+                <img src={content.backgroundImage} alt="Hero BG" className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">No image selected</div>
+              )}
+            </div>
+            {content.backgroundImage && (
+              <button
+                onClick={() => onChange({ ...content, backgroundImage: "" })}
+                className="mt-2 text-sm text-red-600 hover:text-red-700"
+              >
+                Clear image
+              </button>
+            )}
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-heritage-green mb-2">Background Video (optional)</h4>
+            <div className="aspect-video rounded-lg overflow-hidden border border-border bg-muted/30">
+              {content.backgroundVideo ? (
+                <video src={content.backgroundVideo} controls preload="metadata" className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">No video selected</div>
+              )}
+            </div>
+            {content.backgroundVideo && (
+              <button
+                onClick={() => onChange({ ...content, backgroundVideo: "" })}
+                className="mt-2 text-sm text-red-600 hover:text-red-700"
+              >
+                Clear video
+              </button>
+            )}
+          </div>
+        </div>
+        <p className="text-xs text-muted-foreground mt-3">
+          If a video is set, it will be used as the hero background instead of the image. The image will be used as the video poster (thumbnail).
+        </p>
+      </SectionCard>
+
+      {/* Upload New */}
+      <SectionCard title="Upload New Background">
+        <div className="flex flex-wrap gap-4">
+          <FileUploader
+            category="hero-background"
+            accept="image/*,video/*"
+            label="Choose File (Image or Video)"
+            onUploaded={(path) => {
+              const isVid = /\.(mp4|webm|ogg)$/i.test(path);
+              if (isVid) {
+                onChange({ ...content, backgroundVideo: path });
+              } else {
+                onChange({ ...content, backgroundImage: path });
+              }
+              fetchHeroFiles();
+            }}
+          />
+        </div>
+      </SectionCard>
+
+      {/* Choose from Uploaded Files */}
+      <SectionCard title="Choose from Uploaded Files">
+        {loading ? (
+          <Loader2 className="w-6 h-6 animate-spin text-temple-gold" />
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {heroFiles.map((file) => (
+              <div key={file.filename} className="group relative aspect-video rounded-lg overflow-hidden border border-border bg-muted/30">
+                {file.isImage ? (
+                  <img
+                    src={file.path}
+                    alt={file.filename}
+                    className={`w-full h-full object-cover cursor-pointer ${
+                      content.backgroundImage === file.path ? "ring-2 ring-temple-gold" : ""
+                    }`}
+                    onClick={() => onChange({ ...content, backgroundImage: file.path })}
+                  />
+                ) : (
+                  <video
+                    src={file.path}
+                    preload="metadata"
+                    className={`w-full h-full object-cover cursor-pointer ${
+                      content.backgroundVideo === file.path ? "ring-2 ring-temple-gold" : ""
+                    }`}
+                    onClick={() => onChange({ ...content, backgroundVideo: file.path })}
+                  />
+                )}
+                {file.isVideo && (
+                  <div className="absolute top-1 left-1">
+                    <Film className="w-4 h-4 text-white drop-shadow" />
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-end">
+                  <div className="w-full bg-black/70 px-2 py-1 flex items-center justify-between">
+                    <span className="text-white text-[10px] truncate flex-1">{file.filename}</span>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleDeleteHeroFile(file.filename); }}
+                      className="text-red-400 hover:text-red-300 ml-1"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {heroFiles.length === 0 && (
+              <p className="text-sm text-muted-foreground col-span-full text-center py-4">
+                No files uploaded yet. Use the upload button above.
+              </p>
+            )}
+          </div>
+        )}
+      </SectionCard>
+
+      {/* Hero Text Content */}
+      <SectionCard title="Hero Text Content">
+        <AdminField label="Badge Text" value={content.badgeText} onChange={(v) => onChange({ ...content, badgeText: v })} />
+        <AdminField label="Title" value={content.title} onChange={(v) => onChange({ ...content, title: v })} />
+        <AdminField label="Tagline" value={content.tagline} onChange={(v) => onChange({ ...content, tagline: v })} />
+        <AdminField label="Subtitle" value={content.subtitle} onChange={(v) => onChange({ ...content, subtitle: v })} />
         <div className="grid grid-cols-2 gap-4">
-          {content.stats.map((stat: StatItem, i: number) => (
-            <div key={i} className="space-y-2 p-3 bg-muted/30 rounded-md">
-              <AdminField label={`Stat ${i + 1} Value`} value={stat.value} onChange={(v) => {
-                const stats = [...content.stats];
-                stats[i] = { ...stat, value: v };
-                onChange({ ...content, stats });
-              }} />
-              <AdminField label={`Stat ${i + 1} Label`} value={stat.label} onChange={(v) => {
-                const stats = [...content.stats];
-                stats[i] = { ...stat, label: v };
-                onChange({ ...content, stats });
-              }} />
-            </div>
-          ))}
+          <AdminField label="Since Year" value={String(content.sinceYear)} onChange={(v) => onChange({ ...content, sinceYear: Number(v) || 1996 })} type="number" />
+          <AdminField label="Primary Button Text" value={content.primaryButtonText} onChange={(v) => onChange({ ...content, primaryButtonText: v })} />
         </div>
-      </div>
-    </SectionCard>
+        <div className="grid grid-cols-2 gap-4">
+          <AdminField label="Primary Button Link" value={content.primaryButtonLink} onChange={(v) => onChange({ ...content, primaryButtonLink: v })} />
+          <AdminField label="Secondary Button Text" value={content.secondaryButtonText} onChange={(v) => onChange({ ...content, secondaryButtonText: v })} />
+        </div>
+        <AdminField label="Secondary Button Link" value={content.secondaryButtonLink} onChange={(v) => onChange({ ...content, secondaryButtonLink: v })} />
+      </SectionCard>
+    </div>
   );
 }
 
-/* Kalaripayattu Editor */
-function KalaripayattuEditor({ content, onChange }: { content: SiteContent["kalaripayattu"]; onChange: (v: SiteContent["kalaripayattu"]) => void }) {
-  return (
-    <SectionCard title="Kalaripayattu Programs">
-      <AdminField label="Eyebrow Label" value={content.eyebrow} onChange={(v) => onChange({ ...content, eyebrow: v })} />
-      <AdminField label="Title" value={content.title} onChange={(v) => onChange({ ...content, title: v })} />
-      <AdminField label="Description" value={content.description} onChange={(v) => onChange({ ...content, description: v })} type="textarea" />
+/* =========================
+   COURSES & SERVICES MANAGER
+   ========================= */
+function CoursesAndServicesManager({
+  courses,
+  marmaServices,
+  onCoursesChange,
+  onMarmaChange,
+}: {
+  courses: CourseItem[];
+  marmaServices: string[];
+  onCoursesChange: (v: CourseItem[]) => void;
+  onMarmaChange: (v: string[]) => void;
+}) {
+  const trainingCourses = courses.filter((c) => c.category === "training");
+  const wellnessCourses = courses.filter((c) => c.category === "wellness");
 
-      <div className="border-t border-border pt-4">
-        <h4 className="text-sm font-medium text-heritage-green mb-3">Programs</h4>
+  const addCourse = (category: "training" | "wellness") => {
+    const maxId = courses.reduce((max, c) => Math.max(max, c.id), 0);
+    const newCourse: CourseItem = {
+      id: maxId + 1,
+      duration: "Duration",
+      title: "New Course",
+      subtitle: "Subtitle",
+      description: "Description",
+      features: "Feature 1\nFeature 2\nFeature 3",
+      type: "Residential",
+      suitableFor: "All Levels",
+      amountInr: 0,
+      amountUsd: 0,
+      tokenAmountInr: 0,
+      tokenAmountUsd: 0,
+      isPopular: false,
+      isActive: true,
+      displayOrder: courses.length + 1,
+      category,
+    };
+    onCoursesChange([...courses, newCourse]);
+  };
+
+  const updateCourse = (index: number, updated: CourseItem) => {
+    const globalIndex = courses.findIndex((c) => c.id === updated.id);
+    if (globalIndex === -1) return;
+    const newCourses = [...courses];
+    newCourses[globalIndex] = updated;
+    onCoursesChange(newCourses);
+  };
+
+  const removeCourse = (id: number) => {
+    if (!window.confirm("Remove this course?")) return;
+    onCoursesChange(courses.filter((c) => c.id !== id));
+  };
+
+  return (
+    <div className="space-y-8">
+      {/* Kalaripayattu Training Courses */}
+      <SectionCard title="Kalaripayattu Training Courses">
         <div className="space-y-4">
-          {content.programs.map((program: ProgramItem, i: number) => (
-            <div key={i} className="p-3 bg-muted/30 rounded-md space-y-2">
-              <AdminField label={`Program ${i + 1} Title`} value={program.title} onChange={(v) => {
-                const programs = [...content.programs];
-                programs[i] = { ...program, title: v };
-                onChange({ ...content, programs });
-              }} />
-              <AdminField label={`Program ${i + 1} Description`} value={program.description} onChange={(v) => {
-                const programs = [...content.programs];
-                programs[i] = { ...program, description: v };
-                onChange({ ...content, programs });
-              }} type="textarea" rows={2} />
-            </div>
+          {trainingCourses.map((course) => (
+            <CourseEditor
+              key={course.id}
+              course={course}
+              onChange={(updated) => updateCourse(course.id, updated)}
+              onRemove={() => removeCourse(course.id)}
+            />
           ))}
+          {trainingCourses.length === 0 && (
+            <p className="text-sm text-muted-foreground text-center py-4">No training courses yet.</p>
+          )}
+          <button
+            onClick={() => addCourse("training")}
+            className="w-full py-3 border-2 border-dashed border-border rounded-md text-sm text-muted-foreground hover:border-temple-gold/50 hover:text-temple-gold transition-colors flex items-center justify-center gap-2"
+          >
+            <Plus className="w-4 h-4" /> Add Training Course
+          </button>
         </div>
-      </div>
-    </SectionCard>
-  );
-}
+      </SectionCard>
 
-/* Marma Editor */
-function MarmaEditor({ content, onChange }: { content: SiteContent["marma"]; onChange: (v: SiteContent["marma"]) => void }) {
-  return (
-    <SectionCard title="Marma Chikitsa">
-      <AdminField label="Eyebrow Label" value={content.eyebrow} onChange={(v) => onChange({ ...content, eyebrow: v })} />
-      <AdminField label="Title" value={content.title} onChange={(v) => onChange({ ...content, title: v })} />
-      <AdminField label="Description" value={content.description} onChange={(v) => onChange({ ...content, description: v })} type="textarea" />
+      {/* Wellness Therapy Courses */}
+      <SectionCard title="Wellness Therapy Courses">
+        <div className="space-y-4">
+          {wellnessCourses.map((course) => (
+            <CourseEditor
+              key={course.id}
+              course={course}
+              onChange={(updated) => updateCourse(course.id, updated)}
+              onRemove={() => removeCourse(course.id)}
+            />
+          ))}
+          {wellnessCourses.length === 0 && (
+            <p className="text-sm text-muted-foreground text-center py-4">No wellness courses yet.</p>
+          )}
+          <button
+            onClick={() => addCourse("wellness")}
+            className="w-full py-3 border-2 border-dashed border-border rounded-md text-sm text-muted-foreground hover:border-temple-gold/50 hover:text-temple-gold transition-colors flex items-center justify-center gap-2"
+          >
+            <Plus className="w-4 h-4" /> Add Wellness Course
+          </button>
+        </div>
+      </SectionCard>
 
-      <div className="border-t border-border pt-4">
-        <h4 className="text-sm font-medium text-heritage-green mb-3">Services</h4>
+      {/* Marma Services */}
+      <SectionCard title="Marma Chikilsa Services">
         <div className="space-y-2">
-          {content.services.map((service: string, i: number) => (
+          {marmaServices.map((service, i) => (
             <div key={i} className="flex gap-2">
               <input
                 value={service}
                 onChange={(e) => {
-                  const services = [...content.services];
-                  services[i] = e.target.value;
-                  onChange({ ...content, services });
+                  const updated = [...marmaServices];
+                  updated[i] = e.target.value;
+                  onMarmaChange(updated);
                 }}
                 className="flex-1 px-3 py-2 border border-border rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-temple-gold/50"
               />
               <button
                 onClick={() => {
-                  const services = content.services.filter((_: string, idx: number) => idx !== i);
-                  onChange({ ...content, services });
+                  const updated = marmaServices.filter((_, idx) => idx !== i);
+                  onMarmaChange(updated);
                 }}
                 className="px-3 py-2 text-red-600 hover:bg-red-50 rounded-md text-sm transition-colors"
               >
-                Remove
+                <Trash2 className="w-4 h-4" />
               </button>
             </div>
           ))}
           <button
-            onClick={() => onChange({ ...content, services: [...content.services, "New Service"] })}
-            className="w-full py-2 border-2 border-dashed border-border rounded-md text-sm text-muted-foreground hover:border-temple-gold/50 hover:text-temple-gold transition-colors"
+            onClick={() => onMarmaChange([...marmaServices, "New Service"])}
+            className="w-full py-2 border-2 border-dashed border-border rounded-md text-sm text-muted-foreground hover:border-temple-gold/50 hover:text-temple-gold transition-colors flex items-center justify-center gap-2"
           >
-            + Add Service
+            <Plus className="w-4 h-4" /> Add Service
           </button>
         </div>
-      </div>
-    </SectionCard>
+      </SectionCard>
+    </div>
   );
 }
 
-/* Wellness Editor */
-function WellnessEditor({ content, onChange }: { content: SiteContent["wellness"]; onChange: (v: SiteContent["wellness"]) => void }) {
-  return (
-    <SectionCard title="Wellness Packages">
-      <AdminField label="Eyebrow Label" value={content.eyebrow} onChange={(v) => onChange({ ...content, eyebrow: v })} />
-      <AdminField label="Title" value={content.title} onChange={(v) => onChange({ ...content, title: v })} />
-      <AdminField label="Description" value={content.description} onChange={(v) => onChange({ ...content, description: v })} type="textarea" />
+/* =========================
+   COURSE EDITOR (expandable card)
+   ========================= */
+function CourseEditor({
+  course,
+  onChange,
+  onRemove,
+}: {
+  course: CourseItem;
+  onChange: (updated: CourseItem) => void;
+  onRemove: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
 
-      <div className="border-t border-border pt-4">
-        <h4 className="text-sm font-medium text-heritage-green mb-3">Packages</h4>
-        <div className="space-y-4">
-          {content.packages.map((pkg: WellnessPackage, i: number) => (
-            <div key={i} className="p-3 bg-muted/30 rounded-md space-y-2">
-              <AdminField label={`Package ${i + 1} Title`} value={pkg.title} onChange={(v) => {
-                const packages = [...content.packages];
-                packages[i] = { ...pkg, title: v };
-                onChange({ ...content, packages });
-              }} />
-              <AdminField label={`Package ${i + 1} Description`} value={pkg.description} onChange={(v) => {
-                const packages = [...content.packages];
-                packages[i] = { ...pkg, description: v };
-                onChange({ ...content, packages });
-              }} type="textarea" rows={2} />
-              <button
-                onClick={() => {
-                  const packages = content.packages.filter((_: WellnessPackage, idx: number) => idx !== i);
-                  onChange({ ...content, packages });
-                }}
-                className="text-red-600 hover:bg-red-50 px-3 py-1 rounded-md text-xs transition-colors"
-              >
-                Remove Package
-              </button>
-            </div>
-          ))}
+  return (
+    <div className={`border rounded-lg overflow-hidden ${course.isPopular ? "border-temple-gold" : "border-border"}`}>
+      <div
+        className="flex items-center justify-between px-4 py-3 bg-muted/30 cursor-pointer hover:bg-muted/50 transition-colors"
+        onClick={() => setExpanded(!expanded)}
+      >
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-medium text-heritage-green">{course.title}</span>
+          <span className="text-xs text-muted-foreground">{course.duration} - {course.category}</span>
+          {course.isPopular && (
+            <span className="text-[10px] bg-temple-gold text-heritage-green-dark px-2 py-0.5 rounded font-bold uppercase">Popular</span>
+          )}
+          {!course.isActive && (
+            <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold uppercase">Inactive</span>
+          )}
+        </div>
+        <div className="flex items-center gap-2">
           <button
-            onClick={() => onChange({ ...content, packages: [...content.packages, { title: "New Package", description: "Description" }] })}
-            className="w-full py-2 border-2 border-dashed border-border rounded-md text-sm text-muted-foreground hover:border-temple-gold/50 hover:text-temple-gold transition-colors"
+            onClick={(e) => { e.stopPropagation(); onRemove(); }}
+            className="p-1 text-red-500 hover:bg-red-50 rounded transition-colors"
           >
-            + Add Package
+            <Trash2 className="w-4 h-4" />
           </button>
+          <ChevronRight className={`w-4 h-4 text-muted-foreground transition-transform ${expanded ? "rotate-90" : ""}`} />
         </div>
       </div>
-    </SectionCard>
-  );
-}
-
-/* Courses Editor */
-function CoursesEditor({ courses, onChange }: { courses: CourseItem[]; onChange: (v: CourseItem[]) => void }) {
-  return (
-    <div className="space-y-6">
-      {courses.map((course, i) => (
-        <SectionCard key={course.id} title={`Course: ${course.title}`}>
+      {expanded && (
+        <div className="p-4 space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            <AdminField label="Title" value={course.title} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, title: v };
-              onChange(updated);
-            }} />
-            <AdminField label="Duration" value={course.duration} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, duration: v };
-              onChange(updated);
-            }} />
+            <AdminField label="Title" value={course.title} onChange={(v) => onChange({ ...course, title: v })} />
+            <AdminField label="Duration" value={course.duration} onChange={(v) => onChange({ ...course, duration: v })} />
           </div>
-          <AdminField label="Subtitle" value={course.subtitle} onChange={(v) => {
-            const updated = [...courses];
-            updated[i] = { ...course, subtitle: v };
-            onChange(updated);
-          }} />
-          <AdminField label="Description" value={course.description} onChange={(v) => {
-            const updated = [...courses];
-            updated[i] = { ...course, description: v };
-            onChange(updated);
-          }} type="textarea" />
-          <AdminField label="Features (one per line)" value={course.features} onChange={(v) => {
-            const updated = [...courses];
-            updated[i] = { ...course, features: v };
-            onChange(updated);
-          }} type="textarea" rows={5} />
+          <AdminField label="Subtitle" value={course.subtitle} onChange={(v) => onChange({ ...course, subtitle: v })} />
+          <AdminField label="Description" value={course.description} onChange={(v) => onChange({ ...course, description: v })} type="textarea" />
+          <AdminField label="Features (one per line)" value={course.features} onChange={(v) => onChange({ ...course, features: v })} type="textarea" rows={5} />
           <div className="grid grid-cols-2 gap-4">
-            <AdminField label="Type" value={course.type} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, type: v };
-              onChange(updated);
-            }} />
-            <AdminField label="Suitable For" value={course.suitableFor} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, suitableFor: v };
-              onChange(updated);
-            }} />
+            <AdminField label="Type" value={course.type} onChange={(v) => onChange({ ...course, type: v })} />
+            <AdminField label="Suitable For" value={course.suitableFor} onChange={(v) => onChange({ ...course, suitableFor: v })} />
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <AdminField label="Amount (INR)" value={String(course.amountInr)} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, amountInr: Number(v) || 0 };
-              onChange(updated);
-            }} type="number" />
-            <AdminField label="Amount (USD)" value={String(course.amountUsd)} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, amountUsd: Number(v) || 0 };
-              onChange(updated);
-            }} type="number" />
+            <AdminField label="Amount (INR)" value={String(course.amountInr)} onChange={(v) => onChange({ ...course, amountInr: Number(v) || 0 })} type="number" />
+            <AdminField label="Amount (USD)" value={String(course.amountUsd)} onChange={(v) => onChange({ ...course, amountUsd: Number(v) || 0 })} type="number" />
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <AdminField label="Token Amount (INR)" value={String(course.tokenAmountInr)} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, tokenAmountInr: Number(v) || 0 };
-              onChange(updated);
-            }} type="number" />
-            <AdminField label="Token Amount (USD)" value={String(course.tokenAmountUsd)} onChange={(v) => {
-              const updated = [...courses];
-              updated[i] = { ...course, tokenAmountUsd: Number(v) || 0 };
-              onChange(updated);
-            }} type="number" />
+            <AdminField label="Token Amount (INR)" value={String(course.tokenAmountInr)} onChange={(v) => onChange({ ...course, tokenAmountInr: Number(v) || 0 })} type="number" />
+            <AdminField label="Token Amount (USD)" value={String(course.tokenAmountUsd)} onChange={(v) => onChange({ ...course, tokenAmountUsd: Number(v) || 0 })} type="number" />
           </div>
-          <div className="flex items-center gap-4 pt-2">
+          <div className="flex items-center gap-6 pt-2">
             <label className="flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
                 checked={course.isPopular}
-                onChange={(e) => {
-                  const updated = [...courses];
-                  updated[i] = { ...course, isPopular: e.target.checked };
-                  onChange(updated);
-                }}
+                onChange={(e) => onChange({ ...course, isPopular: e.target.checked })}
                 className="w-4 h-4 accent-heritage-green"
               />
               Popular
@@ -492,139 +792,14 @@ function CoursesEditor({ courses, onChange }: { courses: CourseItem[]; onChange:
               <input
                 type="checkbox"
                 checked={course.isActive}
-                onChange={(e) => {
-                  const updated = [...courses];
-                  updated[i] = { ...course, isActive: e.target.checked };
-                  onChange(updated);
-                }}
+                onChange={(e) => onChange({ ...course, isActive: e.target.checked })}
                 className="w-4 h-4 accent-heritage-green"
               />
               Active
             </label>
           </div>
-        </SectionCard>
-      ))}
+        </div>
+      )}
     </div>
-  );
-}
-
-/* Contact Editor */
-function ContactEditor({ content, onChange }: { content: SiteContent["contact"]; onChange: (v: SiteContent["contact"]) => void }) {
-  return (
-    <SectionCard title="Contact Information">
-      <div className="grid grid-cols-2 gap-4">
-        <AdminField label="Phone (E.164)" value={content.phone} onChange={(v) => onChange({ ...content, phone: v })} />
-        <AdminField label="Phone Display" value={content.phoneDisplay} onChange={(v) => onChange({ ...content, phoneDisplay: v })} />
-      </div>
-      <AdminField label="WhatsApp Number" value={content.whatsapp} onChange={(v) => onChange({ ...content, whatsapp: v })} />
-      <AdminField label="Email" value={content.email} onChange={(v) => onChange({ ...content, email: v })} />
-      <AdminField label="Address" value={content.address} onChange={(v) => onChange({ ...content, address: v })} type="textarea" />
-      <AdminField label="Hours" value={content.hours} onChange={(v) => onChange({ ...content, hours: v })} />
-      <AdminField label="Instagram URL" value={content.instagram} onChange={(v) => onChange({ ...content, instagram: v })} />
-      <AdminField label="Facebook URL" value={content.facebook} onChange={(v) => onChange({ ...content, facebook: v })} />
-      <AdminField label="YouTube URL" value={content.youtube} onChange={(v) => onChange({ ...content, youtube: v })} />
-    </SectionCard>
-  );
-}
-
-/* Footer Editor */
-function FooterEditor({ content, onChange }: { content: SiteContent["footer"]; onChange: (v: SiteContent["footer"]) => void }) {
-  return (
-    <SectionCard title="Footer">
-      <AdminField label="Brand Name" value={content.brand} onChange={(v) => onChange({ ...content, brand: v })} />
-      <AdminField label="Tagline" value={content.tagline} onChange={(v) => onChange({ ...content, tagline: v })} />
-      <AdminField label="Description" value={content.description} onChange={(v) => onChange({ ...content, description: v })} type="textarea" />
-      <AdminField label="Copyright" value={content.copyright} onChange={(v) => onChange({ ...content, copyright: v })} />
-
-      <div className="border-t border-border pt-4">
-        <h4 className="text-sm font-medium text-heritage-green mb-3">Quick Links</h4>
-        <div className="space-y-2">
-          {content.quickLinks.map((link: { label: string; href: string }, i: number) => (
-            <div key={i} className="flex gap-2">
-              <input
-                value={link.label}
-                onChange={(e) => {
-                  const links = [...content.quickLinks];
-                  links[i] = { ...link, label: e.target.value };
-                  onChange({ ...content, quickLinks: links });
-                }}
-                placeholder="Label"
-                className="flex-1 px-3 py-2 border border-border rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-temple-gold/50"
-              />
-              <input
-                value={link.href}
-                onChange={(e) => {
-                  const links = [...content.quickLinks];
-                  links[i] = { ...link, href: e.target.value };
-                  onChange({ ...content, quickLinks: links });
-                }}
-                placeholder="URL"
-                className="flex-1 px-3 py-2 border border-border rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-temple-gold/50"
-              />
-              <button
-                onClick={() => {
-                  const links = content.quickLinks.filter((_: unknown, idx: number) => idx !== i);
-                  onChange({ ...content, quickLinks: links });
-                }}
-                className="px-3 py-2 text-red-600 hover:bg-red-50 rounded-md text-sm"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-          <button
-            onClick={() => onChange({ ...content, quickLinks: [...content.quickLinks, { label: "New Link", href: "/" }] })}
-            className="w-full py-2 border-2 border-dashed border-border rounded-md text-sm text-muted-foreground hover:border-temple-gold/50 hover:text-temple-gold transition-colors"
-          >
-            + Add Link
-          </button>
-        </div>
-      </div>
-
-      <div className="border-t border-border pt-4">
-        <h4 className="text-sm font-medium text-heritage-green mb-3">Services Links</h4>
-        <div className="space-y-2">
-          {content.services.map((link: { label: string; href: string }, i: number) => (
-            <div key={i} className="flex gap-2">
-              <input
-                value={link.label}
-                onChange={(e) => {
-                  const links = [...content.services];
-                  links[i] = { ...link, label: e.target.value };
-                  onChange({ ...content, services: links });
-                }}
-                placeholder="Label"
-                className="flex-1 px-3 py-2 border border-border rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-temple-gold/50"
-              />
-              <input
-                value={link.href}
-                onChange={(e) => {
-                  const links = [...content.services];
-                  links[i] = { ...link, href: e.target.value };
-                  onChange({ ...content, services: links });
-                }}
-                placeholder="URL"
-                className="flex-1 px-3 py-2 border border-border rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-temple-gold/50"
-              />
-              <button
-                onClick={() => {
-                  const links = content.services.filter((_: unknown, idx: number) => idx !== i);
-                  onChange({ ...content, services: links });
-                }}
-                className="px-3 py-2 text-red-600 hover:bg-red-50 rounded-md text-sm"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-          <button
-            onClick={() => onChange({ ...content, services: [...content.services, { label: "New Service", href: "/" }] })}
-            className="w-full py-2 border-2 border-dashed border-border rounded-md text-sm text-muted-foreground hover:border-temple-gold/50 hover:text-temple-gold transition-colors"
-          >
-            + Add Service Link
-          </button>
-        </div>
-      </div>
-    </SectionCard>
   );
 }

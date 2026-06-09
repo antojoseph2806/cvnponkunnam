@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Star, Quote } from "lucide-react";
 import { motion } from "./motion";
 import { SectionHeader } from "./SectionHeader";
@@ -44,7 +43,7 @@ const testimonials = [
   },
 ];
 
-export function HeritageTestimonials({ compact }: { compact?: boolean }) {
+export function HeritageTestimonials() {
   return (
     <section className="py-24 bg-heritage-green-dark text-heritage-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +55,7 @@ export function HeritageTestimonials({ compact }: { compact?: boolean }) {
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.slice(0, compact ? 3 : 6).map((item, index) => (
+          {testimonials.map((item, index) => (
             <motion.blockquote
               key={item.name}
               initial={{ opacity: 0, y: 20 }}
@@ -81,17 +80,6 @@ export function HeritageTestimonials({ compact }: { compact?: boolean }) {
             </motion.blockquote>
           ))}
         </div>
-
-        {compact && (
-          <div className="text-center mt-10">
-            <Link
-              href="/testimonials"
-              className="text-temple-gold hover:text-temple-gold-light font-medium underline-offset-4 hover:underline"
-            >
-              Read all testimonials
-            </Link>
-          </div>
-        )}
       </div>
     </section>
   );

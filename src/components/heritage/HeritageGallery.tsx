@@ -4,9 +4,10 @@ import Link from "next/link";
 import { motion } from "./motion";
 import { SectionHeader } from "./SectionHeader";
 import { HeritageImage } from "./HeritageImage";
-import type { GalleryImage } from "@/lib/gallery";
+import type { GalleryImage, GalleryVideo } from "@/lib/gallery";
 
 type DisplayImage = { src: string; alt: string; slug: string };
+type DisplayVideo = { src: string; alt: string; slug: string };
 
 const FALLBACK_IMAGES: DisplayImage[] = [
   "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
@@ -23,11 +24,12 @@ const FALLBACK_IMAGES: DisplayImage[] = [
 
 type HeritageGalleryProps = {
   images?: GalleryImage[];
+  videos?: GalleryVideo[];
   previewCount?: number;
   showViewAllLink?: boolean;
 };
 
-export function HeritageGallery({ images = [], previewCount = 6, showViewAllLink = true }: HeritageGalleryProps) {
+export function HeritageGallery({ images = [], videos = [], previewCount = 6, showViewAllLink = true }: HeritageGalleryProps) {
   const displayImages: DisplayImage[] =
     images.length > 0
       ? images.slice(0, previewCount).map((img) => ({
@@ -36,6 +38,12 @@ export function HeritageGallery({ images = [], previewCount = 6, showViewAllLink
           slug: img.slug,
         }))
       : FALLBACK_IMAGES.slice(0, previewCount);
+
+  const displayVideos: DisplayVideo[] = videos.map((v) => ({
+    src: v.src,
+    alt: v.alt,
+    slug: v.slug,
+  }));
 
   return (
     <section id="gallery" className="py-24 bg-heritage-cream">
@@ -46,7 +54,8 @@ export function HeritageGallery({ images = [], previewCount = 6, showViewAllLink
           description="Training, healing, wellness, and cultural heritage captured at our Kalari."
         />
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+        {/* Photo Gallery */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 mb-16">
           {displayImages.map((image, index) => (
             <motion.div
               key={image.slug}
@@ -69,6 +78,37 @@ export function HeritageGallery({ images = [], previewCount = 6, showViewAllLink
             </motion.div>
           ))}
         </div>
+
+        {/* Video Gallery */}
+        {displayVideos.length > 0 && (
+          <div>
+            <h3 className="font-display text-heritage-green text-2xl md:text-3xl font-semibold text-center mb-8">
+              Video Gallery
+            </h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayVideos.map((video, index) => (
+                <motion.div
+                  key={video.slug}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="group relative overflow-hidden rounded-lg shadow-lg"
+                >
+                  <div className="relative aspect-video bg-heritage-green-dark">
+                    <video
+                      src={video.src}
+                      controls
+                      preload="metadata"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {showViewAllLink && (
           <div className="text-center mt-12">

@@ -6,7 +6,7 @@ import { useSiteContent } from "@/lib/content-store";
 export default function KalariTrainingCourses() {
   const { content } = useSiteContent();
   const courses = content.courses
-    .filter((c) => c.isActive)
+    .filter((c) => c.isActive && c.category === "training")
     .sort((a, b) => a.displayOrder - b.displayOrder);
 
   return (
@@ -21,7 +21,7 @@ export default function KalariTrainingCourses() {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
         {courses.map((course, index) => {
           const featuresList = course.features.split('\n').filter(f => f.trim());
           const delayClass = `motion-delay-${Math.min(index + 2, 8)}`;

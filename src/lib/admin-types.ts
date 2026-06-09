@@ -1,5 +1,6 @@
 export interface HeroContent {
   backgroundImage: string;
+  backgroundVideo: string;
   badgeText: string;
   title: string;
   tagline: string;
@@ -79,6 +80,7 @@ export interface CourseItem {
   isPopular: boolean;
   isActive: boolean;
   displayOrder: number;
+  category: "training" | "wellness";
 }
 
 export interface ContactInfo {
@@ -116,13 +118,14 @@ export interface SiteContent {
 export const defaultContent: SiteContent = {
   hero: {
     backgroundImage: "/assets/kalari-training-hero.png",
+    backgroundVideo: "",
     badgeText: "Kerala Tourism recognized institution",
     title: "AKM SREE RUDRA",
     tagline: "Preserving Kerala's Ancient Science of Combat, Healing & Wellness",
     subtitle: "Traditional Kalaripayattu Training - Marma Chikilsa - Ayurvedic Wellness - Holistic Rejuvenation",
     sinceYear: 1996,
     primaryButtonText: "Explore Programs",
-    primaryButtonLink: "/training-programs",
+    primaryButtonLink: "/kalaripayattu",
     secondaryButtonText: "Book Consultation",
     secondaryButtonLink: "/contact",
   },
@@ -196,32 +199,13 @@ export const defaultContent: SiteContent = {
   courses: [
     {
       id: 1,
-      duration: "1 Week",
-      title: "Kalari Aaramba",
-      subtitle: "A perfect introduction to the ancient art of Kalaripayattu",
+      duration: "1-2 Weeks",
+      title: "Kalari Foundation",
+      subtitle: "From introduction to strong fundamentals in Northern Style Kalaripayattu",
       description:
-        "Begin your Kalari journey with foundational practices including warm-ups, salutations, basic stances, and introductory body sequences in a traditional Gurukulam setting.",
+        "Begin your Kalari journey and build solid fundamentals — from foundational warm-ups, salutations, and basic stances through expanded body conditioning, additional sequences, and deeper immersion into the CVN tradition of Northern Style Kalaripayattu, all in a traditional Gurukulam setting.",
       features:
-        "Kalari Warm-Up sequences\nVandanam (traditional salutation)\nKaalukal × 4 leg exercises\nChuvadu × 1 basic footwork\nMeypayattu × 1 body sequence\nVadivu (postures and stances)",
-      type: "Residential",
-      suitableFor: "Beginners",
-      amountInr: 8000,
-      amountUsd: 95,
-      tokenAmountInr: 2000,
-      tokenAmountUsd: 25,
-      isPopular: false,
-      isActive: true,
-      displayOrder: 1,
-    },
-    {
-      id: 2,
-      duration: "2 Weeks",
-      title: "Kalari Praramba",
-      subtitle: "Build a strong foundation in Northern Style Kalaripayattu",
-      description:
-        "Establish solid fundamentals with expanded body conditioning, additional sequences, and deeper immersion into the CVN tradition of Northern Style Kalaripayattu.",
-      features:
-        "Kalari Warm-Up + Vandanam + Vadivu\nKaalukal × 6 leg exercises\nChuvadu × 1 footwork sequence\nChumattadi × 1 weight exercise\nMeypayattu × 1 complete body sequence\nDaily meditation and breathing practice",
+        "Kalari Warm-Up sequences + Vandanam (traditional salutation)\nKaalukal × 6 leg exercises\nChuvadu × 1 footwork sequence\nChumattadi × 1 weight exercise\nMeypayattu × 1 complete body sequence\nVadivu (postures and stances)\nDaily meditation and breathing practice",
       type: "Residential",
       suitableFor: "Beginners",
       amountInr: 16000,
@@ -230,48 +214,31 @@ export const defaultContent: SiteContent = {
       tokenAmountUsd: 35,
       isPopular: false,
       isActive: true,
-      displayOrder: 2,
+      displayOrder: 1,
+      category: "training",
     },
     {
-      id: 3,
-      duration: "1 Month",
-      title: "Kalari Parijaya",
-      subtitle: "Intensive residential training for dedicated practitioners",
+      id: 2,
+      duration: "1-2 Months",
+      title: "Kalari Mastery",
+      subtitle: "Intensive residential training from advanced sequences to comprehensive Kalari arts",
       description:
-        "Immerse yourself fully with twice-daily training sessions. Progress through advanced sequences, weapon introductions, and deepen your understanding of Kalari as a way of life.",
+        "Immerse yourself fully with twice-daily training sessions and progress from advanced sequences and weapon introductions to comprehensive mastery of all foundational aspects of Northern Style Kalaripayattu, including wooden weapon training and deeper philosophical understanding.",
       features:
-        "Kalari Warm-Up + Vandanam + Vadivu\nKaalukal × 8 leg exercises\nChuvadu × 2 footwork sequences\nChumattadi × 1 weight exercise\nMeypayattu × 2 body sequences\nAngachuvadu (advanced footwork)\nNeduvadi + Vadiveeshal (staff basics)",
+        "Kalari Warm-Up + Vandanam + Vadivu\nKaalukal × 10 leg exercises\nChuvadu × 3 footwork sequences\nChumattadi × 2 weight exercises\nMeypayattu × 3 body sequences\nAngachuvadu (advanced footwork)\nNeduvadi + Vadiveeshal (staff basics)\nCheruvadi Introduction (short stick)\nCompletion certificate awarded",
       type: "Residential",
-      suitableFor: "Intermediate",
-      amountInr: 25500,
-      amountUsd: 305,
-      tokenAmountInr: 5000,
-      tokenAmountUsd: 60,
-      isPopular: true,
-      isActive: true,
-      displayOrder: 3,
-    },
-    {
-      id: 4,
-      duration: "2 Months",
-      title: "Kalari Parisrema",
-      subtitle: "Comprehensive mastery of foundational Kalari arts",
-      description:
-        "The complete residential experience covering all foundational aspects of Northern Style Kalaripayattu. Includes wooden weapon introduction and deeper philosophical understanding.",
-      features:
-        "Kalari Warm-Up + Vandanam + Vadivu\nKaalukal × 10 leg exercises\nChuvadu × 3 footwork sequences\nChumattadi × 2 weight exercises\nMeypayattu × 3 body sequences\nAngachuvadu + Neduvadi + Vadiveeshal\nCheruvadi Introduction (short stick)\nCompletion certificate awarded",
-      type: "Residential",
-      suitableFor: "Advanced Beginners",
+      suitableFor: "Intermediate to Advanced",
       amountInr: 51000,
       amountUsd: 610,
       tokenAmountInr: 8000,
       tokenAmountUsd: 95,
-      isPopular: false,
+      isPopular: true,
       isActive: true,
-      displayOrder: 4,
+      displayOrder: 2,
+      category: "training",
     },
     {
-      id: 5,
+      id: 3,
       duration: "3 Days",
       title: "Relax Therapy",
       subtitle: "Herbal heat therapy and full-body massages for complete relaxation",
@@ -287,10 +254,11 @@ export const defaultContent: SiteContent = {
       tokenAmountUsd: 18,
       isPopular: false,
       isActive: true,
-      displayOrder: 5,
+      displayOrder: 3,
+      category: "wellness",
     },
     {
-      id: 6,
+      id: 4,
       duration: "5 Days",
       title: "Destress Therapy",
       subtitle: "Dhara and full-body massages for deeper relaxation and stress relief",
@@ -306,10 +274,11 @@ export const defaultContent: SiteContent = {
       tokenAmountUsd: 30,
       isPopular: false,
       isActive: true,
-      displayOrder: 6,
+      displayOrder: 4,
+      category: "wellness",
     },
     {
-      id: 7,
+      id: 5,
       duration: "7 Days",
       title: "Kalari Conditioning",
       subtitle: "Complete traditional full-body conditioning program for practitioners",
@@ -325,7 +294,8 @@ export const defaultContent: SiteContent = {
       tokenAmountUsd: 36,
       isPopular: false,
       isActive: true,
-      displayOrder: 7,
+      displayOrder: 5,
+      category: "wellness",
     },
   ],
   contact: {
@@ -347,17 +317,14 @@ export const defaultContent: SiteContent = {
     quickLinks: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "Legacy", href: "/legacy" },
       { label: "Founder", href: "/founder" },
       { label: "Gallery", href: "/gallery" },
       { label: "Contact", href: "/contact" },
     ],
     services: [
       { label: "Kalaripayattu Training", href: "/kalaripayattu" },
-      { label: "Training Programs", href: "/training-programs" },
       { label: "Marma Chikilsa", href: "/marma-chikilsa" },
       { label: "Wellness & Rejuvenation", href: "/wellness" },
-      { label: "International Students", href: "/international-students" },
     ],
     copyright: "AKM Sree Rudra CVN Kalari. All rights reserved.",
   },

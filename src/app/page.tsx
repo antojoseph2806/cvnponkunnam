@@ -12,7 +12,7 @@ import {
   HeritageCtaBanner,
 } from "@/components/heritage";
 import { OrganizationSchema, LocalBusinessSchema } from "@/components/StructuredData";
-import { getGalleryImages } from "@/lib/gallery";
+import { getGalleryImages, getGalleryVideos } from "@/lib/gallery";
 import { SEO_KEYWORDS, HERITAGE } from "@/lib/heritage-content";
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const images = await getGalleryImages();
+  const videos = await getGalleryVideos();
 
   return (
     <HeritageSiteLayout>
@@ -40,8 +41,8 @@ export default async function HomePage() {
         <HeritageKalaripayattu />
         <HeritageMarma />
         <HeritageWellness />
-        <HeritageGallery images={images} previewCount={6} />
-        <HeritageTestimonials compact />
+        <HeritageGallery images={images} videos={videos} previewCount={6} />
+        <HeritageTestimonials />
         <HeritageCtaBanner />
         <HeritageContact />
       </main>

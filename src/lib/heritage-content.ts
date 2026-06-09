@@ -13,22 +13,17 @@ export const HERITAGE = {
 export const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Our Legacy", href: "/legacy" },
   { label: "Founder", href: "/founder" },
   {
     label: "Programs",
     href: "/kalaripayattu",
     children: [
       { label: "Kalaripayattu Training", href: "/kalaripayattu" },
-      { label: "Training Programs", href: "/training-programs" },
       { label: "Marma Chikilsa", href: "/marma-chikilsa" },
       { label: "Wellness & Rejuvenation", href: "/wellness" },
-      { label: "International Students", href: "/international-students" },
     ],
   },
   { label: "Gallery", href: "/gallery" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

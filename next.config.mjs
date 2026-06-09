@@ -8,6 +8,13 @@ const nextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: __dirname,
   
+  // Allow large file uploads via admin
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '50mb',
+    },
+  },
+  
   // Image optimization
   images: {
     remotePatterns: [

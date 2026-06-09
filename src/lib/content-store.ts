@@ -5,10 +5,19 @@ import type { SiteContent, CourseItem } from "./admin-types";
 import { defaultContent } from "./admin-types";
 
 const STORAGE_KEY = "akm-sree-rudra-site-content";
+const CONTENT_VERSION = "v5"; // admin overhaul: media management, hero video support, simplified courses/services
+const VERSION_KEY = "akm-sree-rudra-content-version";
 
 export function loadContent(): SiteContent {
   if (typeof window === "undefined") return defaultContent;
   try {
+    // If content version has changed, reset to new defaults
+    const storedVersion = localStorage.getItem(VERSION_KEY);
+    if (storedVersion !== CONTENT_VERSION) {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.setItem(VERSION_KEY, CONTENT_VERSION);
+      return defaultContent;
+    }
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultContent;
     const parsed = JSON.parse(raw) as Partial<SiteContent>;
@@ -51,6 +60,7 @@ export function saveContent(content: SiteContent): void {
 export function resetContent(): void {
   if (typeof window === "undefined") return;
   localStorage.removeItem(STORAGE_KEY);
+  localStorage.setItem(VERSION_KEY, CONTENT_VERSION);
 }
 
 export function exportContent(): string {

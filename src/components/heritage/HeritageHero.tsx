@@ -15,6 +15,7 @@ export function HeritageHero() {
       <div className="absolute inset-0">
         <HeroBackground
           src={hero.backgroundImage}
+          videoSrc={hero.backgroundVideo || undefined}
           alt="Traditional Kalaripayattu training at AKM Sree Rudra"
         />
         <div

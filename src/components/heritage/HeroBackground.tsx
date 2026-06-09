@@ -8,11 +8,27 @@ const FALLBACK =
 
 type HeroBackgroundProps = {
   src: string;
+  videoSrc?: string;
   alt: string;
 };
 
-export function HeroBackground({ src, alt }: HeroBackgroundProps) {
+export function HeroBackground({ src, videoSrc, alt }: HeroBackgroundProps) {
   const [imgSrc, setImgSrc] = useState(src);
+
+  if (videoSrc) {
+    return (
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster={src || undefined}
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={videoSrc} type={videoSrc.endsWith(".webm") ? "video/webm" : videoSrc.endsWith(".ogg") ? "video/ogg" : "video/mp4"} />
+      </video>
+    );
+  }
 
   return (
     <HeritageImage
