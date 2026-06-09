@@ -1,0 +1,5 @@
+- Built on Next.js 15 App Router with TypeScript, using file-based routing in `src/app/` for pages like `/services`, `/gallery`, and `/about`.
+- Component architecture splits into reusable UI primitives (`src/components/ui/` via shadcn/ui), domain-specific components (`src/components/`), and a dedicated `heritage` sub-system (`src/components/heritage/`) for themed layouts and sections.
+- Global state and providers are managed in `src/app/providers.tsx`, wrapping the root layout with tooltip and toast contexts.
+- Content and configuration are externalized into `src/lib/` modules (e.g., `heritage-content.ts`, `gallery.ts`, `seo-config.ts`), decoupling data from presentation.
+- SEO is deeply integrated via Next.js Metadata API in `layout.tsx` and page-level exports, alongside custom `StructuredData` components for JSON-LD.

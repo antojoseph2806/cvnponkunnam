@@ -1,0 +1,5 @@
+- Next.js 15 with React 18 and TypeScript.
+- Tailwind CSS for styling, enhanced with `tailwindcss-animate` and `class-variance-authority`.
+- Radix UI primitives via shadcn/ui for accessible component composition.
+- Three.js for 3D visualizations (e.g., `KalariThreeScene`).
+- Vitest for unit testing.

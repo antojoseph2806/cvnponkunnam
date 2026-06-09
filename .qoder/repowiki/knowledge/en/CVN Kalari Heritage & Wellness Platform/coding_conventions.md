@@ -1,0 +1,3 @@
+- Page components use Next.js Metadata API exports for SEO configuration, ensuring each route has tailored title, description, and OpenGraph tags.
+- Domain-specific components are organized into thematic subdirectories (e.g., `heritage/`) with barrel exports (`index.ts`) to simplify imports and maintain modular boundaries.
+- Utility functions for class name merging (`cn`) and content management are centralized in `src/lib/`, promoting consistent styling and data access patterns.

@@ -1,0 +1,1 @@
+A Next.js-based digital platform for AKM Sree Rudra CVN Kalari, showcasing Kalaripayattu training, Marma Chikilsa healing, and wellness services with a focus on Kerala's cultural heritage.

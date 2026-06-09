@@ -1,0 +1,322 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: main
+exported_at: "2026-06-03T13:48:50Z"
+modules:
+    "":
+        dir_name: CVN Kalari Heritage & Wellness Platform
+        title: CVN Kalari Heritage & Wellness Platform
+        scope:
+            - src/
+            - public/
+            - package.json
+            - next.config.mjs
+            - tsconfig.json
+            - tailwind.config.ts
+            - postcss.config.js
+            - eslint.config.js
+            - components.json
+            - .gitignore
+            - vitest.config.ts
+            - next-env.d.ts
+            - cvnponkunnam\.env.example
+            - cvnponkunnam\.gitignore
+            - cvnponkunnam\components.json
+            - cvnponkunnam\eslint.config.js
+            - cvnponkunnam\next-env.d.ts
+            - cvnponkunnam\next.config.mjs
+            - cvnponkunnam\package-lock.json
+            - cvnponkunnam\package.json
+            - cvnponkunnam\postcss.config.js
+            - cvnponkunnam\public\assets\Kalari Rejuvenation 1.jpeg
+            - cvnponkunnam\public\assets\Kalari Rejuvenation 2.jpeg
+            - cvnponkunnam\public\assets\about.png
+            - cvnponkunnam\public\assets\gallery images\1.png
+            - cvnponkunnam\public\assets\gallery images\10.png
+            - cvnponkunnam\public\assets\gallery images\11.png
+            - cvnponkunnam\public\assets\gallery images\12.png
+            - cvnponkunnam\public\assets\gallery images\13.png
+            - cvnponkunnam\public\assets\gallery images\2.png
+            - cvnponkunnam\public\assets\gallery images\3.png
+            - cvnponkunnam\public\assets\gallery images\4.png
+            - cvnponkunnam\public\assets\gallery images\5.png
+            - cvnponkunnam\public\assets\gallery images\6.png
+            - cvnponkunnam\public\assets\gallery images\7.png
+            - cvnponkunnam\public\assets\gallery images\8.png
+            - cvnponkunnam\public\assets\gallery images\9.png
+            - cvnponkunnam\public\assets\hero-ayurveda.jpg
+            - cvnponkunnam\public\assets\hero-martial-art.jpg
+            - cvnponkunnam\public\assets\kalari-training-hero.png
+            - cvnponkunnam\public\assets\kalari-training-landscape.jpg
+            - cvnponkunnam\public\assets\logo-wide.png
+            - cvnponkunnam\public\assets\logo.png
+            - cvnponkunnam\public\assets\marma-chikilsa-background.jpeg
+            - cvnponkunnam\public\assets\slider\sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-ku9w7012s2.avif
+            - cvnponkunnam\public\assets\slider\sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-o84fvltnk6.avif
+            - cvnponkunnam\public\assets\slider\sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-w49urb95z2.avif
+            - cvnponkunnam\public\one month training.jpeg
+            - cvnponkunnam\public\placeholder.svg
+            - cvnponkunnam\public\robots.txt
+            - cvnponkunnam\src\App.css
+            - cvnponkunnam\src\app\about\page.tsx
+            - cvnponkunnam\src\app\blog\page.tsx
+            - cvnponkunnam\src\app\cancellation-refunds\page.tsx
+            - cvnponkunnam\src\app\contact\page.tsx
+            - cvnponkunnam\src\app\founder\page.tsx
+            - cvnponkunnam\src\app\gallery\page.tsx
+            - cvnponkunnam\src\app\globals.css
+            - cvnponkunnam\src\app\international-students\page.tsx
+            - cvnponkunnam\src\app\kalaripayattu\page.tsx
+            - cvnponkunnam\src\app\layout.tsx
+            - cvnponkunnam\src\app\legacy\page.tsx
+            - cvnponkunnam\src\app\marma-chikilsa\page.tsx
+            - cvnponkunnam\src\app\not-found.tsx
+            - cvnponkunnam\src\app\page.tsx
+            - cvnponkunnam\src\app\privacy-policy\page.tsx
+            - cvnponkunnam\src\app\providers.tsx
+            - cvnponkunnam\src\app\services\kalari-rejuvenation\page.tsx
+            - cvnponkunnam\src\app\services\kalari-training\page.tsx
+            - cvnponkunnam\src\app\services\marma-chikilsa\page.tsx
+            - cvnponkunnam\src\app\services\page.tsx
+            - cvnponkunnam\src\app\sitemap.ts
+            - cvnponkunnam\src\app\terms-conditions\page.tsx
+            - cvnponkunnam\src\app\testimonials\page.tsx
+            - cvnponkunnam\src\app\training-programs\page.tsx
+            - cvnponkunnam\src\app\wellness\page.tsx
+            - cvnponkunnam\src\components\About.tsx
+            - cvnponkunnam\src\components\ContactForm.tsx
+            - cvnponkunnam\src\components\FeaturedPrograms.tsx
+            - cvnponkunnam\src\components\Footer.tsx
+            - cvnponkunnam\src\components\Gallery.tsx
+            - cvnponkunnam\src\components\GalleryModal.tsx
+            - cvnponkunnam\src\components\Header.tsx
+            - cvnponkunnam\src\components\HeroSlider.tsx
+            - cvnponkunnam\src\components\InfoBar.tsx
+            - cvnponkunnam\src\components\KalariMotionCanvas.tsx
+            - cvnponkunnam\src\components\KalariThreeScene.tsx
+            - cvnponkunnam\src\components\KalariTrainingCourses.tsx
+            - cvnponkunnam\src\components\Locations.tsx
+            - cvnponkunnam\src\components\OptimizedImage.tsx
+            - cvnponkunnam\src\components\ScrollAnimator.tsx
+            - cvnponkunnam\src\components\Services.tsx
+            - cvnponkunnam\src\components\Stats.tsx
+            - cvnponkunnam\src\components\StickyContactButtons.tsx
+            - cvnponkunnam\src\components\StructuredData.tsx
+            - cvnponkunnam\src\components\Testimonials.tsx
+            - cvnponkunnam\src\components\heritage\HeritageAbout.tsx
+            - cvnponkunnam\src\components\heritage\HeritageContact.tsx
+            - cvnponkunnam\src\components\heritage\HeritageContentPage.tsx
+            - cvnponkunnam\src\components\heritage\HeritageCtaBanner.tsx
+            - cvnponkunnam\src\components\heritage\HeritageFooter.tsx
+            - cvnponkunnam\src\components\heritage\HeritageGallery.tsx
+            - cvnponkunnam\src\components\heritage\HeritageHero.tsx
+            - cvnponkunnam\src\components\heritage\HeritageImage.tsx
+            - cvnponkunnam\src\components\heritage\HeritageKalaripayattu.tsx
+            - cvnponkunnam\src\components\heritage\HeritageMarma.tsx
+            - cvnponkunnam\src\components\heritage\HeritageNavigation.tsx
+            - cvnponkunnam\src\components\heritage\HeritagePageHero.tsx
+            - cvnponkunnam\src\components\heritage\HeritageSiteLayout.tsx
+            - cvnponkunnam\src\components\heritage\HeritageTestimonials.tsx
+            - cvnponkunnam\src\components\heritage\HeritageWellness.tsx
+            - cvnponkunnam\src\components\heritage\HeroBackground.tsx
+            - cvnponkunnam\src\components\heritage\SectionHeader.tsx
+            - cvnponkunnam\src\components\heritage\index.ts
+            - cvnponkunnam\src\components\heritage\motion.tsx
+            - cvnponkunnam\src\components\ui\accordion.tsx
+            - cvnponkunnam\src\components\ui\alert-dialog.tsx
+            - cvnponkunnam\src\components\ui\alert.tsx
+            - cvnponkunnam\src\components\ui\aspect-ratio.tsx
+            - cvnponkunnam\src\components\ui\avatar.tsx
+            - cvnponkunnam\src\components\ui\badge.tsx
+            - cvnponkunnam\src\components\ui\breadcrumb.tsx
+            - cvnponkunnam\src\components\ui\button.tsx
+            - cvnponkunnam\src\components\ui\calendar.tsx
+            - cvnponkunnam\src\components\ui\card.tsx
+            - cvnponkunnam\src\components\ui\carousel.tsx
+            - cvnponkunnam\src\components\ui\checkbox.tsx
+            - cvnponkunnam\src\components\ui\collapsible.tsx
+            - cvnponkunnam\src\components\ui\command.tsx
+            - cvnponkunnam\src\components\ui\context-menu.tsx
+            - cvnponkunnam\src\components\ui\dialog.tsx
+            - cvnponkunnam\src\components\ui\drawer.tsx
+            - cvnponkunnam\src\components\ui\dropdown-menu.tsx
+            - cvnponkunnam\src\components\ui\form.tsx
+            - cvnponkunnam\src\components\ui\hover-card.tsx
+            - cvnponkunnam\src\components\ui\input-otp.tsx
+            - cvnponkunnam\src\components\ui\input.tsx
+            - cvnponkunnam\src\components\ui\label.tsx
+            - cvnponkunnam\src\components\ui\menubar.tsx
+            - cvnponkunnam\src\components\ui\navigation-menu.tsx
+            - cvnponkunnam\src\components\ui\pagination.tsx
+            - cvnponkunnam\src\components\ui\popover.tsx
+            - cvnponkunnam\src\components\ui\progress.tsx
+            - cvnponkunnam\src\components\ui\radio-group.tsx
+            - cvnponkunnam\src\components\ui\resizable.tsx
+            - cvnponkunnam\src\components\ui\scroll-area.tsx
+            - cvnponkunnam\src\components\ui\select.tsx
+            - cvnponkunnam\src\components\ui\separator.tsx
+            - cvnponkunnam\src\components\ui\sheet.tsx
+            - cvnponkunnam\src\components\ui\sidebar.tsx
+            - cvnponkunnam\src\components\ui\skeleton.tsx
+            - cvnponkunnam\src\components\ui\slider.tsx
+            - cvnponkunnam\src\components\ui\sonner.tsx
+            - cvnponkunnam\src\components\ui\switch.tsx
+            - cvnponkunnam\src\components\ui\table.tsx
+            - cvnponkunnam\src\components\ui\tabs.tsx
+            - cvnponkunnam\src\components\ui\textarea.tsx
+            - cvnponkunnam\src\components\ui\toast.tsx
+            - cvnponkunnam\src\components\ui\toaster.tsx
+            - cvnponkunnam\src\components\ui\toggle-group.tsx
+            - cvnponkunnam\src\components\ui\toggle.tsx
+            - cvnponkunnam\src\components\ui\tooltip.tsx
+            - cvnponkunnam\src\components\ui\use-toast.ts
+            - cvnponkunnam\src\data\courses.ts
+            - cvnponkunnam\src\hooks\use-mobile.tsx
+            - cvnponkunnam\src\hooks\use-toast.ts
+            - cvnponkunnam\src\lib\contact.ts
+            - cvnponkunnam\src\lib\gallery.ts
+            - cvnponkunnam\src\lib\heritage-content.ts
+            - cvnponkunnam\src\lib\sanity.ts
+            - cvnponkunnam\src\lib\seo-config.ts
+            - cvnponkunnam\src\lib\utils.ts
+            - cvnponkunnam\src\test\example.test.ts
+            - cvnponkunnam\src\test\setup.ts
+            - cvnponkunnam\tailwind.config.ts
+            - cvnponkunnam\tsconfig.app.json
+            - cvnponkunnam\tsconfig.json
+            - cvnponkunnam\tsconfig.node.json
+            - cvnponkunnam\tsconfig.tsbuildinfo
+            - cvnponkunnam\vitest.config.ts
+            - package-lock.json
+            - public\assets\Kalari Rejuvenation 1.jpeg
+            - public\assets\Kalari Rejuvenation 2.jpeg
+            - public\assets\about.png
+            - public\assets\gallery images\1.png
+            - public\assets\gallery images\10.png
+            - public\assets\gallery images\11.png
+            - public\assets\gallery images\12.png
+            - public\assets\gallery images\13.png
+            - public\assets\gallery images\2.png
+            - public\assets\gallery images\3.png
+            - public\assets\gallery images\4.png
+            - public\assets\gallery images\5.png
+            - public\assets\gallery images\6.png
+            - public\assets\gallery images\7.png
+            - public\assets\gallery images\8.png
+            - public\assets\gallery images\9.png
+            - public\assets\hero-ayurveda.jpg
+            - public\assets\hero-martial-art.jpg
+            - public\assets\kalari-training-hero.png
+            - public\assets\kalari-training-landscape.jpg
+            - public\assets\logo-wide.png
+            - public\assets\logo.png
+            - public\assets\marma-chikilsa-background.jpeg
+            - public\assets\slider\sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-ku9w7012s2.avif
+            - public\assets\slider\sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-o84fvltnk6.avif
+            - public\assets\slider\sreerudra-cvn-kalari-marma-thirummu-and-yoga-chikitsa-kendram-lakkattoor-lakkattoor-kottayam-martial-arts-training-centres-w49urb95z2.avif
+            - public\one month training.jpeg
+            - public\placeholder.svg
+            - public\robots.txt
+            - src\App.css
+            - src\app\about\page.tsx
+            - src\app\blog\page.tsx
+            - src\app\cancellation-refunds\page.tsx
+            - src\app\contact\page.tsx
+            - src\app\gallery\page.tsx
+            - src\app\globals.css
+            - src\app\layout.tsx
+            - src\app\not-found.tsx
+            - src\app\page.tsx
+            - src\app\privacy-policy\page.tsx
+            - src\app\providers.tsx
+            - src\app\services\kalari-rejuvenation\page.tsx
+            - src\app\services\kalari-training\page.tsx
+            - src\app\services\marma-chikilsa\page.tsx
+            - src\app\services\page.tsx
+            - src\app\sitemap.ts
+            - src\app\terms-conditions\page.tsx
+            - src\components\About.tsx
+            - src\components\ContactForm.tsx
+            - src\components\FeaturedPrograms.tsx
+            - src\components\Footer.tsx
+            - src\components\Gallery.tsx
+            - src\components\GalleryModal.tsx
+            - src\components\Header.tsx
+            - src\components\HeroSlider.tsx
+            - src\components\InfoBar.tsx
+            - src\components\KalariMotionCanvas.tsx
+            - src\components\KalariThreeScene.tsx
+            - src\components\KalariTrainingCourses.tsx
+            - src\components\Locations.tsx
+            - src\components\OptimizedImage.tsx
+            - src\components\ScrollAnimator.tsx
+            - src\components\Services.tsx
+            - src\components\Stats.tsx
+            - src\components\StickyContactButtons.tsx
+            - src\components\StructuredData.tsx
+            - src\components\Testimonials.tsx
+            - src\components\ui\accordion.tsx
+            - src\components\ui\alert-dialog.tsx
+            - src\components\ui\alert.tsx
+            - src\components\ui\aspect-ratio.tsx
+            - src\components\ui\avatar.tsx
+            - src\components\ui\badge.tsx
+            - src\components\ui\breadcrumb.tsx
+            - src\components\ui\button.tsx
+            - src\components\ui\calendar.tsx
+            - src\components\ui\card.tsx
+            - src\components\ui\carousel.tsx
+            - src\components\ui\checkbox.tsx
+            - src\components\ui\collapsible.tsx
+            - src\components\ui\command.tsx
+            - src\components\ui\context-menu.tsx
+            - src\components\ui\dialog.tsx
+            - src\components\ui\drawer.tsx
+            - src\components\ui\dropdown-menu.tsx
+            - src\components\ui\form.tsx
+            - src\components\ui\hover-card.tsx
+            - src\components\ui\input-otp.tsx
+            - src\components\ui\input.tsx
+            - src\components\ui\label.tsx
+            - src\components\ui\menubar.tsx
+            - src\components\ui\navigation-menu.tsx
+            - src\components\ui\pagination.tsx
+            - src\components\ui\popover.tsx
+            - src\components\ui\progress.tsx
+            - src\components\ui\radio-group.tsx
+            - src\components\ui\resizable.tsx
+            - src\components\ui\scroll-area.tsx
+            - src\components\ui\select.tsx
+            - src\components\ui\separator.tsx
+            - src\components\ui\sheet.tsx
+            - src\components\ui\sidebar.tsx
+            - src\components\ui\skeleton.tsx
+            - src\components\ui\slider.tsx
+            - src\components\ui\sonner.tsx
+            - src\components\ui\switch.tsx
+            - src\components\ui\table.tsx
+            - src\components\ui\tabs.tsx
+            - src\components\ui\textarea.tsx
+            - src\components\ui\toast.tsx
+            - src\components\ui\toaster.tsx
+            - src\components\ui\toggle-group.tsx
+            - src\components\ui\toggle.tsx
+            - src\components\ui\tooltip.tsx
+            - src\components\ui\use-toast.ts
+            - src\data\courses.ts
+            - src\hooks\use-mobile.tsx
+            - src\hooks\use-toast.ts
+            - src\lib\contact.ts
+            - src\lib\gallery.ts
+            - src\lib\seo-config.ts
+            - src\lib\utils.ts
+            - src\test\example.test.ts
+            - src\test\setup.ts
+            - tsconfig.app.json
+            - tsconfig.node.json
+            - tsconfig.tsbuildinfo
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
