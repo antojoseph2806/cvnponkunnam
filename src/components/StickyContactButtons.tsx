@@ -2,9 +2,11 @@
 
 import { ChevronUp } from "lucide-react";
 import { useState, useEffect } from "react";
-import { CONTACT_TEL_HREF, CONTACT_WHATSAPP_HREF } from "@/lib/contact";
+import { useSiteContent } from "@/lib/content-store";
 
 const StickyContactButtons = () => {
+  const { content } = useSiteContent();
+  const contact = content.contact;
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const StickyContactButtons = () => {
     <div className="fixed right-4 bottom-4 z-50 flex flex-col gap-2">
       {/* Call Button */}
       <a
-        href={CONTACT_TEL_HREF}
+        href={`tel:${contact.phone}`}
         className="pest-floating-button bg-[#1877F2] hover:bg-[#0d5dbf] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
         aria-label="Call us"
       >
@@ -44,7 +46,7 @@ const StickyContactButtons = () => {
 
       {/* Instagram Button */}
       <a
-        href="https://www.instagram.com/akmkalari"
+        href={contact.instagram}
         target="_blank"
         rel="noopener noreferrer"
         className="pest-floating-button bg-[#E4405F] hover:bg-[#d62952] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
@@ -62,7 +64,7 @@ const StickyContactButtons = () => {
 
       {/* WhatsApp Button */}
       <a
-        href={CONTACT_WHATSAPP_HREF}
+        href={`https://wa.me/${contact.whatsapp}`}
         target="_blank"
         rel="noopener noreferrer"
         className="pest-floating-button bg-[#25D366] hover:bg-[#20ba5a] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"

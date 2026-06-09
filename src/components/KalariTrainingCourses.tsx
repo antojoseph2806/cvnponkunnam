@@ -1,10 +1,13 @@
-import Link from "next/link";
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { getFeaturedCourses } from "@/data/courses";
-import { buildCourseEnrollmentWhatsApp } from "@/lib/contact";
+import { useSiteContent } from "@/lib/content-store";
 
 export default function KalariTrainingCourses() {
-  const courses = getFeaturedCourses();
+  const { content } = useSiteContent();
+  const courses = content.courses
+    .filter((c) => c.isActive && c.category === "training")
+    .sort((a, b) => a.displayOrder - b.displayOrder);
 
   return (
     <div className="border-t border-primary/15 pt-14 lg:pt-20">
@@ -18,22 +21,22 @@ export default function KalariTrainingCourses() {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
         {courses.map((course, index) => {
           const featuresList = course.features.split('\n').filter(f => f.trim());
-          // Calculate staggered delay for each card
           const delayClass = `motion-delay-${Math.min(index + 2, 8)}`;
-          
+          const whatsappMsg = `Hello! I'm interested in enrolling for the *${course.duration} ${course.title}* program at AKM Sree Rudra CVN Kalari.`;
+
           return (
             <div
               key={course.id}
               className={`motion-reveal motion-fade-up ${delayClass} relative flex flex-col bg-white border transition-all hover:shadow-[0_32px_80px_-46px_rgba(18,41,25,0.62)] ${
-                course.is_popular
+                course.isPopular
                   ? "border-highlight shadow-[0_32px_80px_-46px_rgba(18,41,25,0.62)]"
                   : "border-primary/10 shadow-[0_24px_60px_-46px_rgba(18,41,25,0.48)]"
               }`}
             >
-              {!!course.is_popular && (
+              {!!course.isPopular && (
                 <div className="absolute -top-3 left-6">
                   <span className="bg-highlight px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-md">
                     Most Popular
@@ -57,8 +60,8 @@ export default function KalariTrainingCourses() {
                     What you&apos;ll learn
                   </p>
                   <ul className="space-y-2">
-                    {featuresList.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2 text-xs text-foreground">
+                    {featuresList.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-xs text-foreground">
                         <span className="mt-1 h-1 w-1 flex-shrink-0 rounded-full bg-highlight" />
                         <span>{feature}</span>
                       </li>
@@ -73,7 +76,7 @@ export default function KalariTrainingCourses() {
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-1">
                       Suitable for
                     </p>
-                    <p className="text-xs font-bold text-foreground">{course.suitable_for}</p>
+                    <p className="text-xs font-bold text-foreground">{course.suitableFor}</p>
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-1">
@@ -86,20 +89,20 @@ export default function KalariTrainingCourses() {
                 <div className="mb-3 text-center">
                   <p className="text-xs text-muted-foreground mb-1">Total Course Fee</p>
                   <p className="text-sm font-bold text-foreground">
-                    ₹{course.amount_inr.toLocaleString()} / ${course.amount_usd.toLocaleString()}
+                    INR {course.amountInr.toLocaleString()} / ${course.amountUsd.toLocaleString()}
                   </p>
                 </div>
 
                 <div className="mb-3 text-center bg-highlight/10 rounded-lg py-2 px-2">
                   <p className="text-xs font-semibold text-highlight mb-1">Token Amount</p>
                   <p className="text-lg font-bold text-highlight">
-                    ₹{course.token_amount_inr.toLocaleString()} / ${course.token_amount_usd.toLocaleString()}
+                    INR {course.tokenAmountInr.toLocaleString()} / ${course.tokenAmountUsd.toLocaleString()}
                   </p>
                 </div>
 
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-accent font-bold" size="lg">
                   <a
-                    href={buildCourseEnrollmentWhatsApp(course.duration, course.title)}
+                    href={`https://wa.me/${content.contact.whatsapp}?text=${encodeURIComponent(whatsappMsg)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

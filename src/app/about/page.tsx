@@ -1,37 +1,83 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import About from "@/components/About";
-import Footer from "@/components/Footer";
+import Link from "next/link";
+import { HeritageSiteLayout } from "@/components/heritage";
+import { HeritageAbout } from "@/components/heritage/HeritageAbout";
+import { HeritagePageHero } from "@/components/heritage/HeritagePageHero";
+import { HeritageCtaBanner } from "@/components/heritage";
+import { HERITAGE } from "@/lib/heritage-content";
 
 export const metadata: Metadata = {
-  title: "About Us | AKM Sree Rudra CVN Kalari | Traditional Kalaripayattu & Healing Center",
-  description:
-    "Learn about AKM Sree Rudra CVN Kalari, a premier center for authentic Kalaripayattu training and traditional healing in Kerala. Guided by experienced Gurukkals in the CVN tradition, we preserve ancient martial arts and healing wisdom for modern practitioners.",
-  keywords:
-    "about CVN Kalari, Kalari Gurukkal, CVN tradition, Kalaripayattu history, traditional martial arts Kerala, Kalari lineage, authentic Kalaripayattu center, Kerala martial arts heritage",
-  openGraph: {
-    title: "About Us | AKM Sree Rudra CVN Kalari",
-    description: "Discover our tradition of authentic Kalaripayattu training and healing in Kerala.",
-    images: [
-      {
-        url: "/assets/about.png",
-        width: 1200,
-        height: 630,
-        alt: "About AKM Sree Rudra CVN Kalari",
-      },
-    ],
-  },
+  title: "About AKM Sree Rudra | Living Heritage Institution Kerala",
+  description: `Learn about ${HERITAGE.brand}, founded in ${HERITAGE.founded} in ${HERITAGE.location}. ${HERITAGE.recognition}.`,
 };
+
+const legacyPillars = [
+  "Kerala Martial Heritage",
+  "Traditional Gurukkal Lineage",
+  "Ancient Knowledge Preservation",
+  "Cultural Demonstrations",
+  "Traditional Values and Discipline",
+];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="pt-20">
-        <About variant="full" />
+    <HeritageSiteLayout>
+      <main>
+        <HeritagePageHero
+          title="About AKM Sree Rudra"
+          subtitle="A sanctuary where ancient wisdom meets modern practice"
+          image="/assets/about.png"
+        />
+        <HeritageAbout />
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-bronze leading-relaxed">
+            <p>
+              AKM Sree Rudra is not merely a martial arts academy. It is a living heritage institution dedicated to
+              preserving and promoting Kerala&apos;s ancient traditions of Kalaripayattu, Marma Chikilsa, Kalari Healing,
+              Ayurvedic Wellness, Yoga, and Holistic Rejuvenation.
+            </p>
+            <p>
+              Under {HERITAGE.founder}, we carry the {HERITAGE.heritage}, welcoming international students, martial
+              artists, wellness travelers, researchers, and organizations seeking authentic transformation.
+            </p>
+          </div>
+        </section>
+
+        {/* Our Legacy Section */}
+        <section className="py-20 bg-heritage-cream">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center mb-12">
+              <p className="text-temple-gold-dark font-display text-sm tracking-widest uppercase mb-2">Our Legacy</p>
+              <h2 className="font-display text-heritage-green text-3xl md:text-4xl font-semibold">
+                Guardians of Kerala&apos;s Ancient Wisdom
+              </h2>
+            </div>
+            <p className="text-bronze text-lg leading-relaxed">
+              Since {HERITAGE.founded}, {HERITAGE.brand} has stood as a beacon for authentic Kalari tradition in{" "}
+              {HERITAGE.location}. Our legacy is rooted in the {HERITAGE.heritage}, passed through generations of
+              disciplined practice and devoted teaching.
+            </p>
+            <p className="text-bronze leading-relaxed">
+              We preserve not only combat techniques but the complete cultural ecosystem of Kalari - healing, spiritual
+              discipline, and community values that define Kerala&apos;s martial heritage.
+            </p>
+            <ul className="grid sm:grid-cols-2 gap-4">
+              {legacyPillars.map((item) => (
+                <li
+                  key={item}
+                  className="p-4 border-l-4 border-temple-gold bg-white rounded-r-lg text-heritage-green font-medium"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link href="/founder" className="inline-block text-temple-gold-dark font-display hover:underline">
+              Meet our Founder & Gurukkal
+            </Link>
+          </div>
+        </section>
+        <HeritageCtaBanner />
       </main>
-      <Footer />
-    </div>
+    </HeritageSiteLayout>
   );
 }
-

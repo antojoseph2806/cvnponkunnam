@@ -9,14 +9,14 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#122919",
+  themeColor: "#0d3b2e",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "AKM Sree Rudra CVN Kalari | Authentic Kalaripayattu Training & Marma Chikitsa in Kerala",
-    template: "%s | AKM Sree Rudra CVN Kalari",
+    default: "AKM SREE RUDRA | Kalaripayattu Training, Marma Chikilsa & Wellness Kerala",
+    template: "%s | AKM SREE RUDRA",
   },
   description:
     "Experience authentic Kalaripayattu training, traditional Marma Chikitsa healing, and Kalari rejuvenation therapy at AKM Sree Rudra CVN Kalari in Lakkattoor, Kottayam, Kerala. Learn from experienced Gurukkals in the CVN tradition.",
@@ -100,8 +100,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/logo.png" />
-        <link rel="apple-touch-icon" href="/assets/logo.png" />
+        <link rel="icon" href="/assets/logo-new.png" />
+        <link rel="apple-touch-icon" href="/assets/logo-new.png" />
         <link rel="canonical" href={siteUrl} />
         <meta name="geo.region" content="IN-KL" />
         <meta name="geo.placename" content="Kottayam, Kerala" />
