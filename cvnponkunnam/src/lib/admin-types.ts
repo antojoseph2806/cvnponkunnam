@@ -281,7 +281,7 @@ export const defaultContent: SiteContent = {
       id: 6,
       duration: "6 Months",
       title: "6-Month Master Residential Course",
-      subtitle: "Complete mastery of traditional Kalaripayattu — weapons, combat, and healing",
+      subtitle: "Deep dive into traditional weapons and advanced combat techniques",
       description:
         "The ultimate Kalari immersion program covering the full traditional syllabus including Otta weapon training, combat strategies, partner drills, and therapeutic applications — transforming dedicated students into well-rounded Kalari practitioners.",
       features:
@@ -300,7 +300,7 @@ export const defaultContent: SiteContent = {
     {
       id: 3,
       duration: "3 Days",
-      title: "Relax Therapy",
+      title: "3 Days Program",
       subtitle: "Herbal heat therapy and full-body massages for complete relaxation",
       description:
         "Support your training journey with traditional Kalari-based therapies. Ideal for beginners easing into the physical demands of Kalari practice, helping the body recover faster and improve flexibility.",
@@ -320,7 +320,7 @@ export const defaultContent: SiteContent = {
     {
       id: 4,
       duration: "5 Days",
-      title: "Destress Therapy",
+      title: "5 Days Program",
       subtitle: "Dhara and full-body massages for deeper relaxation and stress relief",
       description:
         "A deeper therapeutic experience combining traditional Dhara treatment with full-body massages to release stress, calm the nervous system, and restore mental clarity.",
@@ -340,7 +340,7 @@ export const defaultContent: SiteContent = {
     {
       id: 5,
       duration: "7 Days",
-      title: "Kalari Conditioning",
+      title: "7 Days Program",
       subtitle: "Complete traditional full-body conditioning program for practitioners",
       description:
         "The ultimate Kalari conditioning package designed specifically for practitioners. Includes daily massages, herbal therapies, steam treatments, and a full-body alignment traction session.",
@@ -362,10 +362,10 @@ export const defaultContent: SiteContent = {
     phone: "+919946471378",
     phoneDisplay: "+91 99464 71378",
     whatsapp: "919946471378",
-    email: "info@akmsreerudra.com",
+    email: "info@akmsreerudra.com, admin@akmsreerudra.com",
     address: "Lakkattoor, Kottayam, Kerala, India - 686506",
     hours: "Mon - Sat: 6:00 AM - 7:00 PM",
-    instagram: "https://www.instagram.com/akmkalari",
+    instagram: "https://www.instagram.com/akm_sreerudrakalarilakkattoor",
     facebook: "https://www.facebook.com/akmsreerudra",
     youtube: "https://www.youtube.com/@akmsreerudra",
   },

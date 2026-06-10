@@ -5,7 +5,7 @@ import type { SiteContent, CourseItem } from "./admin-types";
 import { defaultContent } from "./admin-types";
 
 const STORAGE_KEY = "akm-sree-rudra-site-content";
-const CONTENT_VERSION = "v7"; // admin overhaul: media management, hero video support, simplified courses/services
+const CONTENT_VERSION = "v10"; // admin overhaul: media management, hero video support, simplified courses/services
 const VERSION_KEY = "akm-sree-rudra-content-version";
 
 export function loadContent(): SiteContent {

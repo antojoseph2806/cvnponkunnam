@@ -73,6 +73,24 @@ export function HeritageContact() {
             >
               Chat on WhatsApp
             </a>
+            <a
+              href={contact.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 bg-white rounded-lg border border-heritage-green/10 shadow-sm hover:border-temple-gold/30 transition-colors"
+            >
+              <img
+                src="/assets/instagram-qr.png"
+                alt="Follow us on Instagram"
+                className="w-20 h-20 rounded-md object-cover shrink-0"
+              />
+              <div>
+                <h3 className="font-display text-heritage-green font-semibold mb-1">Follow us on Instagram</h3>
+                <p className="text-bronze text-xs leading-relaxed">
+                  Scan the QR code or tap here to visit our Instagram page for training updates, events, and daily Kalari life.
+                </p>
+              </div>
+            </a>
           </motion.div>
 
           <motion.form
@@ -126,7 +144,6 @@ export function HeritageContact() {
                 <option value="Kalaripayattu Training">Kalaripayattu Training</option>
                 <option value="Marma Chikilsa">Marma Chikilsa</option>
                 <option value="Wellness & Rejuvenation">Wellness & Rejuvenation</option>
-                <option value="International Program">International Program</option>
               </select>
             </label>
             <label className="block">
