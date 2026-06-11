@@ -37,7 +37,8 @@
   ],
   "exclude": [
     "node_modules",
-    "vitest.config.ts",
+    "**/vitest.config.ts",
+    "**/src/test/**",
     "tailwind.config.ts",
     "eslint.config.js",
     "postcss.config.js"
